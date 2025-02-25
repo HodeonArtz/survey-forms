@@ -13,6 +13,7 @@
     "@mantine/core": "^7.17.0",
     "@mantine/form": "^7.17.0",
     "@mantine/hooks": "^7.17.0",
+    "@tabler/icons-react": "^3.30.0",
     "babel-plugin-react-compiler": "^19.0.0-beta-e1e972c-20250221",
     "i18n": "^0.15.1",
     "react": "^19.0.0",

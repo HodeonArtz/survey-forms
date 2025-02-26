@@ -1,4 +1,4 @@
-import { AppShell, Burger, Group } from "@mantine/core";
+import { AppShell, Burger, Container, Group } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { Outlet } from "react-router-dom";
 import BrandLogo from "./components/layout/BrandLogo";
@@ -40,7 +40,9 @@ const Layout = () => {
       </AppShell.Header>
       <AppShell.Navbar p="md">Navbar</AppShell.Navbar>
       <AppShell.Main>
-        <Outlet />
+        <Container>
+          <Outlet />
+        </Container>
       </AppShell.Main>
     </AppShell>
   );

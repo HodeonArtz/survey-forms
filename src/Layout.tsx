@@ -1,7 +1,7 @@
 import { AppShell, Burger, Group } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { Outlet } from "react-router-dom";
-import BrandLogo from "./components/BrandLogo";
+import BrandLogo from "./components/layout/BrandLogo";
 
 const Layout = () => {
   const [mobileOpened, { toggle: toggleMobile }] = useDisclosure();

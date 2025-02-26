@@ -2,6 +2,7 @@ import { AppShell, Burger, Group } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { Outlet } from "react-router-dom";
 import BrandLogo from "./components/layout/BrandLogo";
+import ThemeModeButton from "./components/layout/ThemeModeButton";
 
 const Layout = () => {
   const [mobileOpened, { toggle: toggleMobile }] = useDisclosure();
@@ -18,20 +19,23 @@ const Layout = () => {
       padding="md"
     >
       <AppShell.Header>
-        <Group h="100%" px="md" gap="lg">
-          <Burger
-            opened={mobileOpened}
-            onClick={toggleMobile}
-            hiddenFrom="sm"
-            size="sm"
-          />
-          <Burger
-            opened={desktopOpened}
-            onClick={toggleDesktop}
-            visibleFrom="sm"
-            size="sm"
-          />
-          <BrandLogo />
+        <Group h="100%" px="md" justify="space-between">
+          <Group h="100%" gap="lg">
+            <Burger
+              opened={mobileOpened}
+              onClick={toggleMobile}
+              hiddenFrom="sm"
+              size="sm"
+            />
+            <Burger
+              opened={desktopOpened}
+              onClick={toggleDesktop}
+              visibleFrom="sm"
+              size="sm"
+            />
+            <BrandLogo />
+          </Group>
+          <ThemeModeButton />
         </Group>
       </AppShell.Header>
       <AppShell.Navbar p="md">Navbar</AppShell.Navbar>

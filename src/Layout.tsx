@@ -1,6 +1,7 @@
 import { AppShell, Burger, Group } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { Outlet } from "react-router-dom";
+import BrandLogo from "./components/BrandLogo";
 
 const Layout = () => {
   const [mobileOpened, { toggle: toggleMobile }] = useDisclosure();
@@ -17,7 +18,7 @@ const Layout = () => {
       padding="md"
     >
       <AppShell.Header>
-        <Group h="100%" px="md">
+        <Group h="100%" px="md" gap="lg">
           <Burger
             opened={mobileOpened}
             onClick={toggleMobile}
@@ -42,7 +43,3 @@ const Layout = () => {
 };
 
 export default Layout;
-
-export const BrandLogo = () => {
-  return <div>BrandLogo</div>;
-};

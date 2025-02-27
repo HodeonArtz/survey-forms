@@ -1,8 +1,9 @@
-import { AppShell, Burger, Container, Group } from "@mantine/core";
+import { AppShell, Burger, Container, Group, Stack } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { Outlet } from "react-router-dom";
 import BrandLogo from "./components/layout/BrandLogo";
 import ThemeModeButton from "./components/layout/ThemeModeButton";
+import Links from "./components/navbar/Links";
 
 const Layout = () => {
   const [mobileOpened, { toggle: toggleMobile }] = useDisclosure();
@@ -38,7 +39,11 @@ const Layout = () => {
           <ThemeModeButton />
         </Group>
       </AppShell.Header>
-      <AppShell.Navbar p="md">Navbar</AppShell.Navbar>
+      <AppShell.Navbar pt="sm">
+        <Stack>
+          <Links />
+        </Stack>
+      </AppShell.Navbar>
       <AppShell.Main>
         <Container>
           <Outlet />

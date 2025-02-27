@@ -19,18 +19,18 @@ interface NavLinkData {
 }
 
 const navLinks: NavLinkData[] = [
-  { label: t("routes.home"), href: "/", icon: IconHome, color: "gray" },
+  { label: t("routes.home"), href: "/", icon: IconHome, color: "indigo" },
   {
-    label: t("routes.form.label"),
-    description: t("routes.form.description"),
-    href: "/",
+    label: t("routes.forms.label"),
+    description: t("routes.forms.description"),
+    href: "/forms",
     icon: IconClipboardText,
     color: "violet",
   },
   {
     label: t("routes.results.label"),
     description: t("routes.results.description"),
-    href: "/",
+    href: "/results",
     icon: IconChartHistogram,
     color: "lime",
   },

@@ -13,8 +13,14 @@ export default i18next
         translation: {
           routes: {
             home: "Home",
-            form: "Form",
-            results: "Form results",
+            form: {
+              label: "Form",
+              description: "Answer the forms",
+            },
+            results: {
+              label: "Results",
+              description: "Check your answers",
+            },
           },
         },
       },

@@ -1,7 +1,13 @@
 import { DefaultMantineColor, NavLink } from "@mantine/core";
-import { Icon, IconHome, IconProps } from "@tabler/icons-react";
+import {
+  Icon,
+  IconChartHistogram,
+  IconClipboardText,
+  IconHome,
+  IconProps,
+} from "@tabler/icons-react";
+import { t } from "i18next";
 import { useState } from "react";
-import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 
 interface NavLinkData {
@@ -12,17 +18,30 @@ interface NavLinkData {
   color?: DefaultMantineColor;
 }
 
-const Links = () => {
-  const { t } = useTranslation();
+const navLinks: NavLinkData[] = [
+  { label: t("routes.home"), href: "/", icon: IconHome, color: "gray" },
+  {
+    label: t("routes.form.label"),
+    description: t("routes.form.description"),
+    href: "/",
+    icon: IconClipboardText,
+    color: "violet",
+  },
+  {
+    label: t("routes.results.label"),
+    description: t("routes.results.description"),
+    href: "/",
+    icon: IconChartHistogram,
+    color: "lime",
+  },
+];
 
-  const navLinks: NavLinkData[] = [
-    { label: t("routes.home"), href: "/", icon: IconHome, color: "violet" },
-  ];
+const Links = () => {
   const [active, setActive] = useState(0);
 
   const links = navLinks.map(
     ({ href, label, description, color, ...item }, index) => (
-      <Link to={href} style={{ textDecoration: "none" }}>
+      <Link to={href} style={{ all: "inherit" }}>
         <NavLink
           key={label}
           active={index === active}

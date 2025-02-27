@@ -40,7 +40,7 @@ const Layout = () => {
         </Group>
       </AppShell.Header>
       <AppShell.Navbar pt="sm">
-        <Stack>
+        <Stack gap={0}>
           <Links />
         </Stack>
       </AppShell.Navbar>

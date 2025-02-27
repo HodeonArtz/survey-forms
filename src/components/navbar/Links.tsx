@@ -1,6 +1,7 @@
 import { NavLink } from "@mantine/core";
 import { Icon, IconProps } from "@tabler/icons-react";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 
 interface NavLinkData {
@@ -10,9 +11,10 @@ interface NavLinkData {
   description?: string;
 }
 
-const navLinks: NavLinkData[] = [{ label: "routes.home", href: "/" }];
-
 const Links = () => {
+  const { t } = useTranslation();
+
+  const navLinks: NavLinkData[] = [{ label: t("routes.home"), href: "/" }];
   const [active, setActive] = useState(0);
 
   const links = navLinks.map(({ href, label, description, ...item }, index) => (

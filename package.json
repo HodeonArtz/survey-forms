@@ -15,9 +15,11 @@
     "@mantine/hooks": "^7.17.0",
     "@tabler/icons-react": "^3.30.0",
     "babel-plugin-react-compiler": "^19.0.0-beta-e1e972c-20250221",
-    "i18n": "^0.15.1",
+    "i18next": "^24.2.2",
+    "i18next-browser-languagedetector": "^8.0.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-i18next": "^15.4.1",
     "react-router-dom": "^7.2.0"
   },
   "devDependencies": {

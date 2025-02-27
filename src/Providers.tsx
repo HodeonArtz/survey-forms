@@ -1,5 +1,7 @@
 import { createTheme, MantineProvider } from "@mantine/core";
-import { ReactNode } from "react";
+import { ReactNode, useEffect } from "react";
+import { useTranslation } from "react-i18next";
+import "./translation/i18next.ts";
 
 const mantineTheme = createTheme({
   fontFamily: "Open Sans",
@@ -10,6 +12,12 @@ const mantineTheme = createTheme({
 });
 
 const Providers = ({ children }: { children: ReactNode }) => {
+  const { i18n } = useTranslation();
+
+  useEffect(() => {
+    i18n.changeLanguage(navigator.language);
+  }, [i18n]);
+
   return <MantineProvider theme={mantineTheme}>{children}</MantineProvider>;
 };
 

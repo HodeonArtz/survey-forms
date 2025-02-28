@@ -12,7 +12,10 @@ export default i18next
       en: {
         translation: {
           routes: {
-            home: "Home",
+            home: {
+              label: "Home",
+              description: "Surveeform's home page",
+            },
             forms: {
               label: "Forms",
               description: "Answer the forms",

@@ -41,8 +41,9 @@ const Links = () => {
 
   const links = navLinks.map(
     ({ href, label, description, color, ...item }, index) => (
-      <Link to={href} style={{ all: "inherit" }}>
+      <Link to={href} style={{ all: "inherit" }} key={crypto.randomUUID()}>
         <NavLink
+          component="div"
           key={label}
           active={index === active}
           label={label}

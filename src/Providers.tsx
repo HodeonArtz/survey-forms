@@ -18,7 +18,11 @@ const Providers = ({ children }: { children: ReactNode }) => {
     i18n.changeLanguage(navigator.language);
   }, [i18n]);
 
-  return <MantineProvider theme={mantineTheme}>{children}</MantineProvider>;
+  return (
+    <MantineProvider theme={mantineTheme} defaultColorScheme="auto">
+      {children}
+    </MantineProvider>
+  );
 };
 
 export default Providers;

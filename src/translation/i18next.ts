@@ -11,6 +11,12 @@ export default i18next
     resources: {
       en: {
         translation: {
+          appearance: {
+            theme: {
+              lightMode: "Light mode",
+              darkMode: "Dark mode",
+            },
+          },
           routes: {
             home: {
               label: "Home",

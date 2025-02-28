@@ -49,6 +49,9 @@ const Layout = () => {
           <Outlet />
         </Container>
       </AppShell.Main>
+      <AppShell.Footer p="md">
+        <Container>Footer</Container>
+      </AppShell.Footer>
     </AppShell>
   );
 };

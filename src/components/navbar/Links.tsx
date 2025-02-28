@@ -7,8 +7,7 @@ import {
   IconProps,
 } from "@tabler/icons-react";
 import { t } from "i18next";
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 interface NavLinkData {
   icon?: React.ForwardRefExoticComponent<IconProps & React.RefAttributes<Icon>>;
@@ -37,24 +36,20 @@ const navLinks: NavLinkData[] = [
 ];
 
 const Links = () => {
-  const [active, setActive] = useState(0);
+  const { pathname } = useLocation();
 
-  const links = navLinks.map(
-    ({ href, label, description, color, ...item }, index) => (
-      <Link to={href} style={{ all: "inherit" }} key={crypto.randomUUID()}>
-        <NavLink
-          component="div"
-          key={label}
-          active={index === active}
-          label={label}
-          description={description}
-          leftSection={item.icon && <item.icon size={16} stroke={1.5} />}
-          onClick={() => setActive(index)}
-          color={color}
-        />
-      </Link>
-    )
-  );
+  const links = navLinks.map(({ href, label, description, color, ...item }) => (
+    <NavLink
+      to={href}
+      component={Link}
+      active={href === pathname}
+      label={label}
+      description={description}
+      leftSection={item.icon && <item.icon size={16} stroke={1.5} />}
+      color={color}
+      key={crypto.randomUUID()}
+    />
+  ));
   return <>{links}</>;
 };
 

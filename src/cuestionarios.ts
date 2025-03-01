@@ -1,4 +1,37 @@
-export const cuestionarios = [
+interface BaseQuestion {
+  id: string;
+  type: "text" | "select" | "check" | "textarea";
+  question: string;
+  answer: string | string[];
+  constraints?: {
+    min?: number;
+    max?: number;
+  };
+  validation?: {
+    min_age?: number;
+    format?: string;
+    domain?: string;
+    max_selected?: number;
+  };
+}
+interface SelectQuestion extends BaseQuestion {
+  type: "select";
+  options: string[] | { group: string; values: string[] }[];
+}
+
+interface CheckQuestion extends BaseQuestion {
+  type: "check";
+  options: string[];
+}
+
+type Question = BaseQuestion | SelectQuestion | CheckQuestion;
+
+interface Survey {
+  title: string;
+  questions: Question[];
+}
+
+export const cuestionarios: Survey[] = [
   {
     title: "Cuestionario de Datos del Usuario",
     questions: [

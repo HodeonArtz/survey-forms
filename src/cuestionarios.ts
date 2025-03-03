@@ -1,6 +1,9 @@
+import { HTMLInputTypeAttribute } from "react";
+
 interface BaseQuestion {
   id: string;
   type: "text" | "select" | "check" | "textarea";
+  inputType: HTMLInputTypeAttribute | "select" | "textarea" | "button";
   question: string;
   answer: string | string[];
   constraints?: {
@@ -16,11 +19,13 @@ interface BaseQuestion {
 }
 interface SelectQuestion extends BaseQuestion {
   type: "select";
+  inputType: SelectQuestion["type"];
   options: string[] | { group: string; values: string[] }[];
 }
 
 interface CheckQuestion extends BaseQuestion {
   type: "check";
+  inputType: "checkbox";
   options: string[];
 }
 
@@ -38,6 +43,7 @@ export const cuestionarios: Survey[] = [
       {
         id: "nombre",
         type: "text",
+        inputType: "text",
         question: "¿Cuál es tu nombre?",
         answer: "",
         constraints: {
@@ -48,6 +54,7 @@ export const cuestionarios: Survey[] = [
       {
         id: "fecha_nacimiento",
         type: "text",
+        inputType: "date",
         question: "¿Cuál es tu fecha de nacimiento?",
         answer: "",
         constraints: {
@@ -61,6 +68,7 @@ export const cuestionarios: Survey[] = [
       {
         id: "email",
         type: "text",
+        inputType: "email",
         question: "¿Cuál es tu correo electrónico?",
         answer: "",
         constraints: {
@@ -75,6 +83,7 @@ export const cuestionarios: Survey[] = [
       {
         id: "sexo",
         type: "select",
+        inputType: "select",
         question: "¿Cuál es tu sexo?",
         answer: "",
         options: ["Masculino", "Femenino", "Otro"],
@@ -82,6 +91,7 @@ export const cuestionarios: Survey[] = [
       {
         id: "preferencias",
         type: "check",
+        inputType: "checkbox",
         question: "¿Qué prefieres hacer en tu tiempo libre?",
         answer: "",
         options: ["Leer", "Deportes", "Viajar", "Cine"],
@@ -94,6 +104,7 @@ export const cuestionarios: Survey[] = [
       {
         id: "comentarios",
         type: "textarea",
+        inputType: "text",
         question: "¿Qué mejorarías en el curso?",
         answer:
           "El contenido del curso está bien, pero sería útil más ejemplos prácticos.",
@@ -105,6 +116,7 @@ export const cuestionarios: Survey[] = [
       {
         id: "satisfaccion",
         type: "select",
+        inputType: "select",
         question: "¿Qué tan satisfecho estás con el contenido del curso?",
         answer: "4",
         options: ["1", "2", "3", "4", "5"],
@@ -112,6 +124,7 @@ export const cuestionarios: Survey[] = [
       {
         id: "asistencia",
         type: "check",
+        inputType: "checkbox",
         question: "¿Asististe a todas las clases?",
         answer: "no",
         options: ["sí", "no"],
@@ -119,6 +132,7 @@ export const cuestionarios: Survey[] = [
       {
         id: "horarios",
         type: "check",
+        inputType: "checkbox",
         question:
           "¿Cuáles horarios prefieres para las clases? (Selecciona hasta 2 options)",
         answer: [],
@@ -141,6 +155,7 @@ export const cuestionarios: Survey[] = [
       {
         id: "comentarios",
         type: "textarea",
+        inputType: "textarea",
         question: "¿Qué tecnología te gustaría aprender en el futuro?",
         answer:
           "Me gustaría aprender sobre inteligencia artificial y machine learning.",
@@ -152,6 +167,7 @@ export const cuestionarios: Survey[] = [
       {
         id: "sistema_operativo",
         type: "select",
+        inputType: "select",
         question: "¿Qué sistema operativo prefieres usar?",
         answer: "Linux",
         options: ["Windows", "Linux", "MacOS"],
@@ -159,6 +175,7 @@ export const cuestionarios: Survey[] = [
       {
         id: "productos",
         type: "check",
+        inputType: "checkbox",
         question:
           "¿Qué dispositivos usas regularmente? (Selecciona hasta 2 options)",
         answer: ["smartphone"],
@@ -170,6 +187,7 @@ export const cuestionarios: Survey[] = [
       {
         id: "tiempo",
         type: "select",
+        inputType: "select",
         question:
           "¿Cuántas horas a la semana dedicas a aprender sobre tecnología?",
         answer: "5",
@@ -183,6 +201,7 @@ export const cuestionarios: Survey[] = [
       {
         id: "comentarios",
         type: "textarea",
+        inputType: "textarea",
         question: "¿Qué género de películas prefieres?",
         answer: "Acción, ciencia ficción y comedia.",
         constraints: {
@@ -193,6 +212,7 @@ export const cuestionarios: Survey[] = [
       {
         id: "favorito",
         type: "select",
+        inputType: "select",
         question: "¿Cuál es tu película favorita?",
         answer: "Inception",
         options: ["Inception", "The Matrix", "Avengers", "Titanic"],
@@ -200,6 +220,7 @@ export const cuestionarios: Survey[] = [
       {
         id: "vista",
         type: "check",
+        inputType: "checkbox",
         question: "¿Has visto alguna de las siguientes películas?",
         answer: "sí",
         options: ["Inception", "The Matrix", "Avengers", "Titanic"],
@@ -207,6 +228,7 @@ export const cuestionarios: Survey[] = [
       {
         id: "frecuencia",
         type: "select",
+        inputType: "select",
         question: "¿Con qué frecuencia ves películas?",
         answer: "4",
         options: [

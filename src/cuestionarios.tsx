@@ -1,4 +1,10 @@
-import { HTMLInputTypeAttribute } from "react";
+import {
+  IconDeviceDesktop,
+  IconMovie,
+  IconSchool,
+  IconUser,
+} from "@tabler/icons-react";
+import { HTMLInputTypeAttribute, ReactNode } from "react";
 
 interface BaseQuestion {
   id: string;
@@ -33,12 +39,14 @@ type Question = BaseQuestion | SelectQuestion | CheckQuestion;
 
 interface Survey {
   title: string;
+  icon: ReactNode;
   questions: Question[];
 }
 
 export const cuestionarios: Survey[] = [
   {
     title: "Cuestionario de Datos del Usuario",
+    icon: <IconUser />,
     questions: [
       {
         id: "nombre",
@@ -100,6 +108,7 @@ export const cuestionarios: Survey[] = [
   },
   {
     title: "Cuestionario de Evaluación Académica",
+    icon: <IconSchool />,
     questions: [
       {
         id: "comentarios",
@@ -151,6 +160,7 @@ export const cuestionarios: Survey[] = [
   },
   {
     title: "Encuesta de Preferencias en Tecnología",
+    icon: <IconDeviceDesktop />,
     questions: [
       {
         id: "comentarios",
@@ -197,6 +207,7 @@ export const cuestionarios: Survey[] = [
   },
   {
     title: "Encuesta de Preferencias de Cine",
+    icon: <IconMovie />,
     questions: [
       {
         id: "comentarios",

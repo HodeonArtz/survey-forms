@@ -6,7 +6,7 @@ import {
   IconHome,
   IconProps,
 } from "@tabler/icons-react";
-import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 import { Link, useLocation } from "react-router-dom";
 
 interface NavLinkData {
@@ -17,25 +17,32 @@ interface NavLinkData {
   color?: DefaultMantineColor;
 }
 
-const navLinks: NavLinkData[] = [
-  { label: t("routes.home.label"), href: "/", icon: IconHome, color: "indigo" },
-  {
-    label: t("routes.forms.label"),
-    description: t("routes.forms.description"),
-    href: "/forms",
-    icon: IconClipboardText,
-    color: "violet",
-  },
-  {
-    label: t("routes.results.label"),
-    description: t("routes.results.description"),
-    href: "/results",
-    icon: IconChartHistogram,
-    color: "lime",
-  },
-];
-
 const Links = () => {
+  const { t } = useTranslation();
+
+  const navLinks: NavLinkData[] = [
+    {
+      label: t("routes.home.label"),
+      href: "/",
+      icon: IconHome,
+      color: "indigo",
+    },
+    {
+      label: t("routes.forms.label"),
+      description: t("routes.forms.description"),
+      href: "/forms",
+      icon: IconClipboardText,
+      color: "violet",
+    },
+    {
+      label: t("routes.results.label"),
+      description: t("routes.results.description"),
+      href: "/results",
+      icon: IconChartHistogram,
+      color: "lime",
+    },
+  ];
+
   const { pathname } = useLocation();
 
   const links = navLinks.map(({ href, label, description, color, ...item }) => (

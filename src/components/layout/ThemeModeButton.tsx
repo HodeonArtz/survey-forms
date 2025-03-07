@@ -7,9 +7,11 @@ import {
 import { IconMoon, IconSun } from "@tabler/icons-react";
 import cx from "clsx";
 import classes from "../../themes.module.css";
-import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 
 const ThemeModeButton = () => {
+  const { t } = useTranslation();
+
   const { colorScheme, setColorScheme } = useMantineColorScheme();
   const computedColorScheme = useComputedColorScheme("light", {
     getInitialValueInEffect: true,

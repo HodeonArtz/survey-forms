@@ -24,7 +24,7 @@ export default i18next
             },
             forms: {
               label: "Forms",
-              description: "Answer the forms",
+              description: "Answer some questions",
             },
             results: {
               label: "Results",

@@ -28,9 +28,9 @@ const Links = () => {
       color: "indigo",
     },
     {
-      label: t("routes.forms.label"),
-      description: t("routes.forms.description"),
-      href: "/forms",
+      label: t("routes.surveys.label"),
+      description: t("routes.surveys.description"),
+      href: "/surveys",
       icon: IconClipboardText,
       color: "violet",
     },

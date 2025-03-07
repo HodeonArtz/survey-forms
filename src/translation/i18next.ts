@@ -22,8 +22,8 @@ export default i18next
               label: "Home",
               description: "Surveeform's home page",
             },
-            forms: {
-              label: "Forms",
+            surveys: {
+              label: "Surveys",
               description: "Answer some questions",
             },
             results: {

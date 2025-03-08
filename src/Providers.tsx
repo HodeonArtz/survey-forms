@@ -9,6 +9,7 @@ const mantineTheme = createTheme({
     fontFamily: "Epilogue",
     fontWeight: "600",
   },
+  primaryColor: "violet",
 });
 
 const Providers = ({ children }: { children: ReactNode }) => {

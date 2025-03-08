@@ -61,7 +61,12 @@ const SurveysPage = () => {
         iconSize="32"
       >
         {steps.map(({ label, description, content, icon }) => (
-          <Stepper.Step label={label} description={description} icon={icon}>
+          <Stepper.Step
+            label={label}
+            description={description}
+            icon={icon}
+            key={label}
+          >
             {content}
           </Stepper.Step>
         ))}

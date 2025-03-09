@@ -1,4 +1,4 @@
-import { Box, Stepper, Title } from "@mantine/core";
+import { Box, Button, Group, Stepper, Title } from "@mantine/core";
 import { ReactNode, useState } from "react";
 import UserDataForm from "./UserDataForm";
 import AcademicEvaluationSurvey from "./AcademicEvaluationSurvey";
@@ -14,7 +14,7 @@ import TechPreferencesSurvey from "./TechPreferencesSurvey";
 const SurveysPage = () => {
   const steps: {
     label: string;
-    description: string;
+    description?: string;
     icon?: ReactNode;
     content: ReactNode;
   }[] = [
@@ -47,7 +47,9 @@ const SurveysPage = () => {
   const [activeForm, setActiveForm] = useState(0);
 
   const nextForm = () =>
-      setActiveForm((current) => (current < 2 ? current + 1 : current)),
+      setActiveForm((current) =>
+        current < steps.length ? current + 1 : current
+      ),
     prevForm = () =>
       setActiveForm((current) => (current > 0 ? current - 1 : current));
 
@@ -59,19 +61,28 @@ const SurveysPage = () => {
         onStepClick={setActiveForm}
         size="sm"
         iconSize="32"
+        allowNextStepsSelect={false}
       >
-        {steps.map(({ label, description, content, icon }) => (
-          <Stepper.Step
-            label={label}
-            description={description}
-            icon={icon}
-            key={label}
-          >
-            {content}
-          </Stepper.Step>
-        ))}
-        <Stepper.Completed>f</Stepper.Completed>
+        {steps.map(({ label, description, content, icon }, i) => {
+          return (
+            <Stepper.Step
+              label={label}
+              description={description}
+              icon={icon}
+              key={label}
+            >
+              {content}
+            </Stepper.Step>
+          );
+        })}
+        <Stepper.Completed>Completed</Stepper.Completed>
       </Stepper>
+      <Group justify="center" mt="xl">
+        <Button variant="default" onClick={prevForm}>
+          Back
+        </Button>
+        <Button onClick={nextForm}>Next step</Button>
+      </Group>
     </Box>
   );
 };

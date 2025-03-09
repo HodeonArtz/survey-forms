@@ -63,7 +63,7 @@ const SurveysPage = () => {
         iconSize="32"
         allowNextStepsSelect={false}
       >
-        {steps.map(({ label, description, content, icon }, i) => {
+        {steps.map(({ label, description, content, icon }) => {
           return (
             <Stepper.Step
               label={label}

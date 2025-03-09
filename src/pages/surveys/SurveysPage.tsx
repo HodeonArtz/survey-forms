@@ -1,4 +1,4 @@
-import { Box, Button, Group, Stepper, Title } from "@mantine/core";
+import { Box, Button, Group, Stack, Stepper, Text, Title } from "@mantine/core";
 import { ReactNode, useState } from "react";
 import UserDataForm from "./UserDataForm";
 import AcademicEvaluationSurvey from "./AcademicEvaluationSurvey";
@@ -55,7 +55,9 @@ const SurveysPage = () => {
 
   return (
     <Box>
-      <Title size="h1">Surveys</Title>
+      <Title size="h1" mb="lg">
+        Surveys
+      </Title>
       <Stepper
         active={activeForm}
         onStepClick={setActiveForm}
@@ -65,13 +67,14 @@ const SurveysPage = () => {
       >
         {steps.map(({ label, description, content, icon }) => {
           return (
-            <Stepper.Step
-              label={label}
-              description={description}
-              icon={icon}
-              key={label}
-            >
-              {content}
+            <Stepper.Step label={label} icon={icon} key={label}>
+              <Stack>
+                <Box>
+                  <Title size="h3">{label}</Title>
+                  <Text c="dimmed">{description}</Text>
+                </Box>
+                {content}
+              </Stack>
             </Stepper.Step>
           );
         })}
@@ -81,7 +84,7 @@ const SurveysPage = () => {
         <Button variant="default" onClick={prevForm}>
           Back
         </Button>
-        <Button onClick={nextForm}>Next step</Button>
+        <Button onClick={nextForm}>Next</Button>
       </Group>
     </Box>
   );

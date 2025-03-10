@@ -1,15 +1,20 @@
 import { Box, Button, Group, Stack, Stepper, Text, Title } from "@mantine/core";
-import { ReactNode, useState } from "react";
+import { MouseEventHandler, ReactNode, useState } from "react";
 import UserDataForm from "./UserDataForm";
 import AcademicEvaluationSurvey from "./AcademicEvaluationSurvey";
 import FilmPreferencesSurvey from "./FilmPreferencesSurvey";
 import {
+  IconArrowLeft,
+  IconArrowRight,
+  IconCheck,
+  IconClipboardText,
   IconDeviceDesktop,
   IconMovie,
   IconSchool,
   IconUser,
 } from "@tabler/icons-react";
 import TechPreferencesSurvey from "./TechPreferencesSurvey";
+import PageTitle from "../../components/layout/PageTitle";
 
 const SurveysPage = () => {
   const steps: {
@@ -53,11 +58,16 @@ const SurveysPage = () => {
     prevForm = () =>
       setActiveForm((current) => (current > 0 ? current - 1 : current));
 
+  const formNavigationProps: FormNavigationButtonsProps = {
+    handlePrevForm: prevForm,
+    handleNextForm: nextForm,
+    currentForm: activeForm,
+    formsLength: steps.length,
+  };
+
   return (
-    <Box>
-      <Title size="h1" mb="lg">
-        Surveys
-      </Title>
+    <Stack gap="xl">
+      <PageTitle icon={<IconClipboardText size={44} />}>Surveys</PageTitle>
       <Stepper
         active={activeForm}
         onStepClick={setActiveForm}
@@ -73,21 +83,62 @@ const SurveysPage = () => {
                   <Title size="h3">{label}</Title>
                   <Text c="dimmed">{description}</Text>
                 </Box>
-                {content}
+                <Stack>{content}</Stack>
               </Stack>
             </Stepper.Step>
           );
         })}
         <Stepper.Completed>Completed</Stepper.Completed>
       </Stepper>
-      <Group justify="center" mt="xl">
-        <Button variant="default" onClick={prevForm}>
-          Back
-        </Button>
-        <Button onClick={nextForm}>Next</Button>
-      </Group>
-    </Box>
+      <FormNavigationButtons {...formNavigationProps} showArrows />
+    </Stack>
   );
 };
 
 export default SurveysPage;
+
+interface FormNavigationButtonsProps {
+  handlePrevForm: MouseEventHandler<HTMLButtonElement>;
+  handleNextForm: MouseEventHandler<HTMLButtonElement>;
+  formsLength: number;
+  currentForm: number;
+  showArrows?: boolean;
+  showText?: boolean;
+}
+
+export const FormNavigationButtons = ({
+  handlePrevForm,
+  handleNextForm,
+  formsLength,
+  currentForm,
+  showArrows = false,
+  showText = true,
+}: FormNavigationButtonsProps) => {
+  const prevText = "Back";
+  const nextText = currentForm >= formsLength - 1 ? "Complete" : "Next";
+
+  return (
+    <Group justify="space-between" mt="xs">
+      <Button
+        variant="subtle"
+        color="gray"
+        disabled={currentForm === 0}
+        onClick={handlePrevForm}
+        leftSection={showArrows && <IconArrowLeft />}
+      >
+        {showText && prevText}
+      </Button>
+      <Button
+        disabled={currentForm === formsLength}
+        onClick={handleNextForm}
+        variant={currentForm >= formsLength - 1 ? "filled" : "subtle"}
+        rightSection={
+          showArrows &&
+          (currentForm >= formsLength - 1 ? <IconCheck /> : <IconArrowRight />)
+        }
+      >
+        {showText && nextText}
+      </Button>
+    </Group>
+  );
+};

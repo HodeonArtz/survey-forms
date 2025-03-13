@@ -2,6 +2,7 @@ import {
   ActionIcon,
   Box,
   Button,
+  Container,
   Group,
   MantineSize,
   Stack,
@@ -88,25 +89,29 @@ const SurveysPage = () => {
         {steps.map(({ label, description, content, icon }) => {
           return (
             <Stepper.Step label={label} icon={icon} key={label}>
-              <Stack>
-                <FormNavigationButtons
-                  {...formNavigationProps}
-                  showArrows
-                  size="sm"
-                  showText={false}
-                />
-                <Box>
-                  <Title size="h3">{label}</Title>
-                  <Text c="dimmed">{description}</Text>
-                </Box>
-                <Stack>{content}</Stack>
-              </Stack>
+              <FormNavigationButtons
+                {...formNavigationProps}
+                showArrows
+                size="md"
+                showText={false}
+              />
+              <Container size="xs">
+                <Stack gap="xl">
+                  <Stack>
+                    <Box>
+                      <Title size="h3">{label}</Title>
+                      <Text c="dimmed">{description}</Text>
+                    </Box>
+                    <Stack>{content}</Stack>
+                  </Stack>
+                  <FormNavigationButtons {...formNavigationProps} showArrows />
+                </Stack>
+              </Container>
             </Stepper.Step>
           );
         })}
         <Stepper.Completed>Completed</Stepper.Completed>
       </Stepper>
-      <FormNavigationButtons {...formNavigationProps} showArrows />
     </Stack>
   );
 };

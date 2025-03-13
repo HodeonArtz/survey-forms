@@ -85,6 +85,7 @@ const SurveysPage = () => {
         size="sm"
         iconSize="32"
         allowNextStepsSelect={false}
+        radius="sm"
       >
         {steps.map(({ label, description, content, icon }) => {
           return (

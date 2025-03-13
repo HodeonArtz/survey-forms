@@ -1,4 +1,14 @@
-import { Box, Button, Group, Stack, Stepper, Text, Title } from "@mantine/core";
+import {
+  ActionIcon,
+  Box,
+  Button,
+  Group,
+  MantineSize,
+  Stack,
+  Stepper,
+  Text,
+  Title,
+} from "@mantine/core";
 import { MouseEventHandler, ReactNode, useState } from "react";
 import UserDataForm from "./UserDataForm";
 import AcademicEvaluationSurvey from "./AcademicEvaluationSurvey";
@@ -79,6 +89,12 @@ const SurveysPage = () => {
           return (
             <Stepper.Step label={label} icon={icon} key={label}>
               <Stack>
+                <FormNavigationButtons
+                  {...formNavigationProps}
+                  showArrows
+                  size="sm"
+                  showText={false}
+                />
                 <Box>
                   <Title size="h3">{label}</Title>
                   <Text c="dimmed">{description}</Text>
@@ -104,6 +120,15 @@ interface FormNavigationButtonsProps {
   currentForm: number;
   showArrows?: boolean;
   showText?: boolean;
+  size?:
+    | (string & {})
+    | MantineSize
+    | "compact-xs"
+    | "compact-sm"
+    | "compact-md"
+    | "compact-lg"
+    | "compact-xl"
+    | undefined;
 }
 
 export const FormNavigationButtons = ({
@@ -113,32 +138,39 @@ export const FormNavigationButtons = ({
   currentForm,
   showArrows = false,
   showText = true,
+  size = "sm",
 }: FormNavigationButtonsProps) => {
   const prevText = "Back";
   const nextText = currentForm >= formsLength - 1 ? "Complete" : "Next";
+  const iconOnly = showArrows && !showText;
+  const rightIcon =
+    currentForm >= formsLength - 1 ? <IconCheck /> : <IconArrowRight />;
+
+  const ButtonComponent = iconOnly ? ActionIcon : Button;
 
   return (
     <Group justify="space-between" mt="xs">
-      <Button
+      <ButtonComponent
         variant="subtle"
         color="gray"
         disabled={currentForm === 0}
         onClick={handlePrevForm}
-        leftSection={showArrows && <IconArrowLeft />}
+        leftSection={iconOnly ? undefined : showArrows && <IconArrowLeft />}
+        size={size}
       >
         {showText && prevText}
-      </Button>
-      <Button
+        {iconOnly && <IconArrowLeft />}
+      </ButtonComponent>
+      <ButtonComponent
         disabled={currentForm === formsLength}
         onClick={handleNextForm}
         variant={currentForm >= formsLength - 1 ? "filled" : "subtle"}
-        rightSection={
-          showArrows &&
-          (currentForm >= formsLength - 1 ? <IconCheck /> : <IconArrowRight />)
-        }
+        rightSection={iconOnly ? undefined : showArrows && rightIcon}
+        size={size}
       >
         {showText && nextText}
-      </Button>
+        {iconOnly && rightIcon}
+      </ButtonComponent>
     </Group>
   );
 };

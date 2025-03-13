@@ -21,6 +21,8 @@ const UserDataForm = () => {
         label="What do you do in your free time?"
         placeholder="Choose the options or write your own option"
         data={["📕 Read books", "⚽ Sports", "🛫 Travel", "🎬 Watch movies"]}
+        defaultValue={["🎬 Watch movies", "📕 Read books"]}
+        clearable
       />
     </>
   );

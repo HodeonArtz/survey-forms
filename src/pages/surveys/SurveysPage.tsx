@@ -96,7 +96,7 @@ const SurveysPage = () => {
                 size="md"
                 showText={false}
               />
-              <Container size="xs">
+              <Container size="xs" mt="sm">
                 <Stack gap="xl">
                   <Stack>
                     <Box>

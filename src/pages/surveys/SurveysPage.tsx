@@ -56,7 +56,7 @@ const SurveysPage = () => {
     {
       icon: <IconMovie size={18} />,
       label: "Film Prefences",
-      description: "Questions about films and ",
+      description: "Questions about films",
       content: <FilmPreferencesSurvey />,
     },
   ];

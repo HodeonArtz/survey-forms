@@ -26,6 +26,7 @@ import {
 } from "@tabler/icons-react";
 import TechPreferencesSurvey from "./TechPreferencesSurvey";
 import PageTitle from "../../components/layout/PageTitle";
+import CompletedScreen from "./CompletedScreen";
 
 const SurveysPage = () => {
   const steps: {
@@ -49,13 +50,13 @@ const SurveysPage = () => {
     {
       icon: <IconDeviceDesktop size={18} />,
       label: "Tech Prefences",
-      description: "Questions about Tech",
+      description: "Questions about technology",
       content: <TechPreferencesSurvey />,
     },
     {
       icon: <IconMovie size={18} />,
       label: "Film Prefences",
-      description: "Questions about Films",
+      description: "Questions about films and ",
       content: <FilmPreferencesSurvey />,
     },
   ];
@@ -111,7 +112,23 @@ const SurveysPage = () => {
             </Stepper.Step>
           );
         })}
-        <Stepper.Completed>Completed</Stepper.Completed>
+        <Stepper.Completed>
+          <FormNavigationButtons
+            {...formNavigationProps}
+            showArrows
+            size="md"
+            showText={false}
+          />
+          <Container size="xs" mt="sm">
+            <Stack>
+              <CompletedScreen />
+              <Group align="center" justify="space-between">
+                <FormNavigationButtons {...formNavigationProps} />
+                <Button mt="xs">Submit</Button>
+              </Group>
+            </Stack>
+          </Container>
+        </Stepper.Completed>
       </Stepper>
     </Stack>
   );
@@ -167,16 +184,17 @@ export const FormNavigationButtons = ({
         {showText && prevText}
         {iconOnly && <IconArrowLeft />}
       </ButtonComponent>
-      <ButtonComponent
-        disabled={currentForm === formsLength}
-        onClick={handleNextForm}
-        variant={currentForm >= formsLength - 1 ? "filled" : "subtle"}
-        rightSection={iconOnly ? undefined : showArrows && rightIcon}
-        size={size}
-      >
-        {showText && nextText}
-        {iconOnly && rightIcon}
-      </ButtonComponent>
+      {currentForm !== formsLength && (
+        <ButtonComponent
+          onClick={handleNextForm}
+          variant={currentForm >= formsLength - 1 ? "filled" : "subtle"}
+          rightSection={iconOnly ? undefined : showArrows && rightIcon}
+          size={size}
+        >
+          {showText && nextText}
+          {iconOnly && rightIcon}
+        </ButtonComponent>
+      )}
     </Group>
   );
 };

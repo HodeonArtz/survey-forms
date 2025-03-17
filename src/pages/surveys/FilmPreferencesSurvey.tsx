@@ -1,10 +1,21 @@
 import {
   Autocomplete,
+  Group,
   Input,
   MultiSelect,
   Rating,
   TagsInput,
+  Text,
 } from "@mantine/core";
+import { IconMoodSad, IconMoodSmile } from "@tabler/icons-react";
+
+const ratingMoviesFrequency = [
+  "Never",
+  "Barely",
+  "Sometimes",
+  "Often",
+  "Always",
+];
 
 const FilmPreferencesSurvey = () => {
   return (
@@ -26,7 +37,16 @@ const FilmPreferencesSurvey = () => {
         data={["Inception", "The Matrix", "Avengers", "Titanic"]}
       />
       <Input.Wrapper label="How often do you watch movies?">
-        <Rating size="lg" color="violet" />
+        <Group align="start">
+          <Rating
+            size="lg"
+            color="violet"
+            emptySymbol={<IconMoodSad />}
+            fullSymbol={<IconMoodSmile color="#7950F2" />}
+            count={5}
+          />
+          <Text>f</Text>
+        </Group>
       </Input.Wrapper>
     </>
   );

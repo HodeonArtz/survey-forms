@@ -2,7 +2,7 @@ import { ActionIcon, Button, Group, MantineSize } from "@mantine/core";
 import { IconArrowLeft, IconArrowRight, IconCheck } from "@tabler/icons-react";
 import { MouseEventHandler } from "react";
 
-export interface FormNavigationButtonsProps {
+export  interface FormNavigationButtonsProps {
   handlePrevForm: MouseEventHandler<HTMLButtonElement>;
   handleNextForm: MouseEventHandler<HTMLButtonElement>;
   formsLength: number;

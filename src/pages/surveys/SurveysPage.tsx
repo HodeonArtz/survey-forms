@@ -22,14 +22,14 @@ import {
 import TechPreferencesSurvey from "./TechPreferencesSurvey";
 import PageTitle from "../../components/layout/PageTitle";
 import CompletedScreen from "./CompletedScreen";
-import { useForm } from "@mantine/form";
 import {
   FormNavigationButtons,
   FormNavigationButtonsProps,
 } from "../../components/form/FormNavigationButtons";
+import { SurveeFormProvider, useSurveeForm } from "../../forms/FormContext";
 
 const SurveysPage = () => {
-  const form = useForm({
+  const form = useSurveeForm({
     mode: "controlled",
     initialValues: {
       userPreferences: ["🎬 Watch movies", "📕 Read books"],
@@ -40,31 +40,31 @@ const SurveysPage = () => {
     label: string;
     description?: string;
     icon?: ReactNode;
-    content: ReactNode;
+    Content: ReactNode;
   }[] = [
     {
       icon: <IconUser size={18} />,
       label: "Personal User Data",
       description: "Submit your personal information",
-      content: <UserDataForm />,
+      Content: <UserDataForm />,
     },
     {
       icon: <IconSchool size={18} />,
       label: "Academic Evaluation",
       description: "Questions about this school year",
-      content: <AcademicEvaluationSurvey />,
+      Content: <AcademicEvaluationSurvey />,
     },
     {
       icon: <IconDeviceDesktop size={18} />,
       label: "Tech Prefences",
       description: "Questions about technology",
-      content: <TechPreferencesSurvey />,
+      Content: <TechPreferencesSurvey />,
     },
     {
       icon: <IconMovie size={18} />,
       label: "Film Prefences",
       description: "Questions about films",
-      content: <FilmPreferencesSurvey />,
+      Content: <FilmPreferencesSurvey />,
     },
   ];
 
@@ -87,49 +87,51 @@ const SurveysPage = () => {
   return (
     <Stack gap="xl">
       <PageTitle icon={<IconClipboardText size={44} />}>Surveys</PageTitle>
-      <Stepper
-        active={activeForm}
-        onStepClick={setActiveForm}
-        size="sm"
-        iconSize="32"
-        allowNextStepsSelect={false}
-        radius="sm"
-      >
-        {steps.map(({ label, description, content, icon }) => {
-          return (
-            <Stepper.Step label={label} icon={icon} key={label}>
-              <FormNavigationButtons
-                {...formNavigationProps}
-                showArrows
-                size="md"
-                showText={false}
-              />
-              <FormLayout
-                description={description}
-                formNavigationProps={formNavigationProps}
-                label={label}
-              >
-                {content}
-              </FormLayout>
-            </Stepper.Step>
-          );
-        })}
-        <Stepper.Completed>
-          <FormNavigationButtons
-            {...formNavigationProps}
-            showArrows
-            size="md"
-            showText={false}
-          />
-          <Container size="xs" mt="sm">
-            <CompletedScreen />
-            <Group align="center" justify="space-between">
-              <FormNavigationButtons {...formNavigationProps} />
-              <Button mt="xs">Submit</Button>
-            </Group>
-          </Container>
-        </Stepper.Completed>
-      </Stepper>
+      <SurveeFormProvider form={form}>
+        <Stepper
+          active={activeForm}
+          onStepClick={setActiveForm}
+          size="sm"
+          iconSize="32"
+          allowNextStepsSelect={false}
+          radius="sm"
+        >
+          {steps.map(({ label, description, Content: content, icon }) => {
+            return (
+              <Stepper.Step label={label} icon={icon} key={label}>
+                <FormNavigationButtons
+                  {...formNavigationProps}
+                  showArrows
+                  size="md"
+                  showText={false}
+                />
+                <FormLayout
+                  description={description}
+                  formNavigationProps={formNavigationProps}
+                  label={label}
+                >
+                  {content}
+                </FormLayout>
+              </Stepper.Step>
+            );
+          })}
+          <Stepper.Completed>
+            <FormNavigationButtons
+              {...formNavigationProps}
+              showArrows
+              size="md"
+              showText={false}
+            />
+            <Container size="xs" mt="sm">
+              <CompletedScreen />
+              <Group align="center" justify="space-between">
+                <FormNavigationButtons {...formNavigationProps} />
+                <Button mt="xs">Submit</Button>
+              </Group>
+            </Container>
+          </Stepper.Completed>
+        </Stepper>
+      </SurveeFormProvider>
     </Stack>
   );
 };

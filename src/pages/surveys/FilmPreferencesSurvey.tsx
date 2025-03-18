@@ -20,6 +20,8 @@ const ratingMoviesFrequency = [
 
 const FilmPreferencesSurvey = () => {
   const form = useSurveeFormContext();
+  const frequencyWord =
+    ratingMoviesFrequency[form.getValues().frequencyWatchingFilms - 1];
   return (
     <>
       <TagsInput
@@ -55,7 +57,9 @@ const FilmPreferencesSurvey = () => {
             fullSymbol={<IconMoodSmile color="#7950F2" />}
             count={5}
           />
-          <Text>f</Text>
+          <Text fw="bolder" c="violet.3">
+            {frequencyWord}
+          </Text>
         </Group>
       </Input.Wrapper>
     </>

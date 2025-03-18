@@ -26,14 +26,16 @@ import {
   FormNavigationButtons,
   FormNavigationButtonsProps,
 } from "../../components/form/FormNavigationButtons";
-import { SurveeFormProvider, useSurveeForm } from "../../forms/FormContext";
+import {
+  formInitialValues,
+  SurveeFormProvider,
+  useSurveeForm,
+} from "../../forms/FormContext";
 
 const SurveysPage = () => {
   const form = useSurveeForm({
-    mode: "uncontrolled",
-    initialValues: {
-      userPreferences: ["🎬 Watch movies", "📕 Read books"],
-    },
+    mode: "controlled",
+    initialValues: formInitialValues,
   });
 
   const steps: {

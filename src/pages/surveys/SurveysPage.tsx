@@ -1,13 +1,4 @@
-import {
-  Box,
-  Button,
-  Container,
-  Group,
-  Stack,
-  Stepper,
-  Text,
-  Title,
-} from "@mantine/core";
+import { Button, Container, Group, Stack, Stepper } from "@mantine/core";
 import { ReactNode, useState } from "react";
 import UserDataForm from "./UserDataForm";
 import AcademicEvaluationSurvey from "./AcademicEvaluationSurvey";
@@ -31,6 +22,7 @@ import {
   SurveeFormProvider,
   useSurveeForm,
 } from "../../forms/FormContext";
+import { FormLayout } from "../../components/form/FormLayout";
 
 const SurveysPage = () => {
   const form = useSurveeForm({
@@ -139,32 +131,3 @@ const SurveysPage = () => {
 };
 
 export default SurveysPage;
-
-interface FormLayoutProps {
-  formNavigationProps: FormNavigationButtonsProps;
-  label: string;
-  description?: string;
-  children: ReactNode;
-}
-
-export const FormLayout = ({
-  children,
-  description,
-  formNavigationProps,
-  label,
-}: FormLayoutProps) => {
-  return (
-    <Container size="xs" mt="sm">
-      <Stack gap="xl">
-        <Stack>
-          <Box>
-            <Title size="h3">{label}</Title>
-            <Text c="dimmed">{description}</Text>
-          </Box>
-          <Stack>{children}</Stack>
-        </Stack>
-        <FormNavigationButtons {...formNavigationProps} showArrows />
-      </Stack>
-    </Container>
-  );
-};

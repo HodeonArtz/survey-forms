@@ -27,6 +27,7 @@ const AcademicEvaluationSurvey = () => {
         key={form.key("preferredSchedules")}
         {...form.getInputProps("preferredSchedules")}
         label="Which schedules do you prefer for class?"
+        placeholder="Select 2 schedules that go the best for you"
         data={[
           { value: "monday", label: "Monday: 9 AM - 11 PM" },
           { value: "tuesday", label: "Tuesday: 3 PM - 5 PM" },

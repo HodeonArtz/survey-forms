@@ -37,6 +37,7 @@ const FilmPreferencesSurvey = () => {
         key={form.key("favoriteFilm")}
         {...form.getInputProps("favoriteFilm")}
         label={"What is your favorite movie?"}
+        placeholder="Write down the one that you liked the most"
         data={["Inception", "The Matrix", "Avengers", "Titanic"]}
       />
       <MultiSelect

@@ -23,13 +23,10 @@ import {
   useSurveeForm,
 } from "../../forms/FormContext";
 import { FormLayout } from "../../components/form/FormLayout";
+import { zodResolver } from "@mantine/form";
+import { userFormSchema } from "../../forms/Validation";
 
 const SurveysPage = () => {
-  const form = useSurveeForm({
-    mode: "controlled",
-    initialValues: formInitialValues,
-  });
-
   const steps: {
     label: string;
     description?: string;
@@ -61,13 +58,21 @@ const SurveysPage = () => {
       Content: <FilmPreferencesSurvey />,
     },
   ];
-
   const [activeForm, setActiveForm] = useState(0);
 
+  const form = useSurveeForm({
+    mode: "controlled",
+    initialValues: formInitialValues,
+    validate: activeForm === 0 ? zodResolver(userFormSchema) : undefined,
+  });
+
   const nextForm = () =>
-      setActiveForm((current) =>
-        current < steps.length ? current + 1 : current
-      ),
+      setActiveForm((current) => {
+        if (form.validate().hasErrors) {
+          return current;
+        }
+        return current < steps.length ? current + 1 : current;
+      }),
     prevForm = () =>
       setActiveForm((current) => (current > 0 ? current - 1 : current));
 

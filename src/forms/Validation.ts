@@ -1,7 +1,7 @@
 import { isValid, parse } from "date-fns";
 import { z } from "zod";
 
-export const userFormSchema = z.object({
+export const userFormSchema = {
   userName: z
     .string()
     .min(3, { message: "Name must have 3 characters min." })
@@ -30,9 +30,9 @@ export const userFormSchema = z.object({
   userPreferences: z
     .array(z.string())
     .min(1, { message: "You should put at least 1 activity" }),
-});
+};
 
-export const academicEvaluationSchema = z.object({
+export const academicEvaluationSchema = {
   yearsComment: z
     .string()
     .min(15, { message: "Your opinion must have 15 characters min." })
@@ -46,4 +46,43 @@ export const academicEvaluationSchema = z.object({
     .array(z.enum(["monday", "tuesday", "wednesday", "thursday", "friday"]))
     .min(1, "Select at least 1 option")
     .max(2, "You can't select more than 2 options"),
-});
+};
+
+export const techPreferencesSchema = {
+  techComment: z
+    .string()
+    .min(20, { message: "Your answer must have 20 characters min." })
+    .max(200, { message: "Your answer must have 200 characters max." }),
+  favoriteOS: z.enum(["windows", "macos", "linux"], {
+    required_error: "You must choose your favorite OS",
+  }),
+  userDevices: z
+    .array(z.enum(["smartphone", "laptop", "tablet", "smartwatch"]))
+    .min(1, "Select at least 1 option")
+    .max(2, "You can't select more than 2 options"),
+  learningTime: z.enum(["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"], {
+    invalid_type_error: "You should select your learning time",
+  }),
+};
+
+export const filmPreferencesSchema = {
+  filmGenres: z
+    .array(
+      z
+        .string()
+        .min(10, { message: "Genre must have 10 characters min." })
+        .max(50, { message: "Genre must have 50 characters max." })
+    )
+    .min(1, "Select at least 1 option"),
+  favoriteFilm: z
+    .string()
+    .min(3, { message: "Film name must have 3 characters min." })
+    .max(50, { message: "Film name must have 50 characters max." }),
+  watchedFilms: z.array(
+    z.enum(["Inception", "The Matrix", "Avengers", "Titanic"])
+  ),
+  frequencyWatchingFilms: z
+    .number()
+    .min(1, { message: "You should choose your frequency watching movies" })
+    .max(5, { message: "You should choose your frequency watching movies" }),
+};

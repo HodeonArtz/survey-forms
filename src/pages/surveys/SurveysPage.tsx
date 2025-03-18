@@ -24,7 +24,13 @@ import {
 } from "../../forms/FormContext";
 import { FormLayout } from "../../components/form/FormLayout";
 import { zodResolver } from "@mantine/form";
-import { academicEvaluationSchema } from "../../forms/Validation";
+import {
+  academicEvaluationSchema,
+  filmPreferencesSchema,
+  techPreferencesSchema,
+  userFormSchema,
+} from "../../forms/Validation";
+import { z, ZodRawShape } from "zod";
 
 const SurveysPage = () => {
   const steps: {
@@ -32,30 +38,35 @@ const SurveysPage = () => {
     description?: string;
     icon?: ReactNode;
     Content: ReactNode;
+    schema: ZodRawShape;
   }[] = [
     {
       icon: <IconUser size={18} />,
       label: "Personal User Data",
       description: "Submit your personal information",
       Content: <UserDataForm />,
+      schema: userFormSchema,
     },
     {
       icon: <IconSchool size={18} />,
       label: "Academic Evaluation",
       description: "Questions about this school year",
       Content: <AcademicEvaluationSurvey />,
+      schema: academicEvaluationSchema,
     },
     {
       icon: <IconDeviceDesktop size={18} />,
       label: "Tech Prefences",
       description: "Questions about technology",
       Content: <TechPreferencesSurvey />,
+      schema: techPreferencesSchema,
     },
     {
       icon: <IconMovie size={18} />,
       label: "Film Prefences",
       description: "Questions about films",
       Content: <FilmPreferencesSurvey />,
+      schema: filmPreferencesSchema,
     },
   ];
   const [activeForm, setActiveForm] = useState(0);
@@ -63,8 +74,7 @@ const SurveysPage = () => {
   const form = useSurveeForm({
     mode: "controlled",
     initialValues: formInitialValues,
-    validate:
-      activeForm === 1 ? zodResolver(academicEvaluationSchema) : undefined,
+    validate: zodResolver(z.object(steps[activeForm].schema)),
   });
 
   const nextForm = () =>

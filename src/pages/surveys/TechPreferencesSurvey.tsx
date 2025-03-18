@@ -18,7 +18,12 @@ const TechPreferencesSurvey = () => {
         {...form.getInputProps("favoriteOS")}
         label="Select your favorite OS"
         placeholder="Select an OS"
-        data={["💻 Windows", "🍎 MacOS", "🐧 Linux"]}
+        data={[
+          { value: "windows", label: "💻 Windows" },
+          { value: "macos", label: "🍎 MacOS" },
+          { value: "linux", label: "🐧 Linux" },
+        ]}
+        allowDeselect={false}
       />
       <MultiSelect
         key={form.key("userDevices")}
@@ -50,6 +55,7 @@ const TechPreferencesSurvey = () => {
           { label: "9 hours", value: "9" },
           { label: "10 hours", value: "10" },
         ]}
+        allowDeselect={false}
       />
     </>
   );

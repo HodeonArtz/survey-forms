@@ -24,7 +24,7 @@ import {
 } from "../../forms/FormContext";
 import { FormLayout } from "../../components/form/FormLayout";
 import { zodResolver } from "@mantine/form";
-import { userFormSchema } from "../../forms/Validation";
+import { academicEvaluationSchema } from "../../forms/Validation";
 
 const SurveysPage = () => {
   const steps: {
@@ -63,7 +63,8 @@ const SurveysPage = () => {
   const form = useSurveeForm({
     mode: "controlled",
     initialValues: formInitialValues,
-    validate: activeForm === 0 ? zodResolver(userFormSchema) : undefined,
+    validate:
+      activeForm === 1 ? zodResolver(academicEvaluationSchema) : undefined,
   });
 
   const nextForm = () =>

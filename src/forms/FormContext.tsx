@@ -8,6 +8,7 @@ export interface FormValues {
   userPreferences: string[];
   yearsComment: string;
   materialRating: number;
+  classAssistance: boolean;
   preferredSchedules: (
     | "monday"
     | "tuesday"
@@ -36,6 +37,7 @@ export const formInitialValues: FormValues = {
   userPreferences: ["🎬 Watch movies", "📕 Read books"],
   yearsComment: "",
   materialRating: 3,
+  classAssistance: false,
   preferredSchedules: [],
   techComment: "",
   favoriteOS: undefined,

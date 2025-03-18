@@ -30,7 +30,7 @@ import { SurveeFormProvider, useSurveeForm } from "../../forms/FormContext";
 
 const SurveysPage = () => {
   const form = useSurveeForm({
-    mode: "controlled",
+    mode: "uncontrolled",
     initialValues: {
       userPreferences: ["🎬 Watch movies", "📕 Read books"],
     },

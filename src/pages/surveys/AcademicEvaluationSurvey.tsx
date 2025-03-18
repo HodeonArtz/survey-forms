@@ -1,18 +1,31 @@
 import { Input, MultiSelect, Rating, Textarea } from "@mantine/core";
+import { useSurveeFormContext } from "../../forms/FormContext";
 
 const AcademicEvaluationSurvey = () => {
+  const form = useSurveeFormContext();
+
   return (
     <>
       <Textarea
+        key={form.key("yearsComment")}
+        {...form.getInputProps("yearsComment")}
         label="What things could improve this year in general?"
         placeholder="Give us some suggestions and feedback to improve your learning for this year"
         resize="vertical"
         rows={5}
       />
       <Input.Wrapper label="Rate this year's material">
-        <Rating size="lg" color="violet" fractions={4} />
+        <Rating
+          key={form.key("materialRating")}
+          {...form.getInputProps("materialRating")}
+          size="lg"
+          color="violet"
+          fractions={4}
+        />
       </Input.Wrapper>
       <MultiSelect
+        key={form.key("preferredSchedules")}
+        {...form.getInputProps("preferredSchedules")}
         label="Which schedules do you prefer for class?"
         data={[
           { value: "monday", label: "Monday: 9 AM - 11 PM" },

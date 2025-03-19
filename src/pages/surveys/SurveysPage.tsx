@@ -1,4 +1,12 @@
-import { Button, Container, Group, Stack, Stepper } from "@mantine/core";
+import {
+  ActionIcon,
+  Button,
+  Container,
+  Group,
+  Stack,
+  Stepper,
+  Tooltip,
+} from "@mantine/core";
 import { ReactNode, useState } from "react";
 import UserDataForm from "./UserDataForm";
 import AcademicEvaluationSurvey from "./AcademicEvaluationSurvey";
@@ -7,6 +15,7 @@ import {
   IconClipboardText,
   IconDeviceDesktop,
   IconMovie,
+  IconRestore,
   IconSchool,
   IconUser,
 } from "@tabler/icons-react";
@@ -83,7 +92,7 @@ const SurveysPage = () => {
   });
 
   const [activeForm, setActiveForm] = useState(
-    readLocalStorageValue<number>({ key: "active-form" })
+    readLocalStorageValue<number>({ key: "active-form" }) || storedActiveForm
   );
 
   const form = useSurveeForm({
@@ -118,6 +127,13 @@ const SurveysPage = () => {
       });
     };
 
+  const handleReset = () => {
+    form.reset();
+    form.setValues(formInitialValues);
+    setActiveForm(0);
+    storeActiveFormToLocal(0);
+  };
+
   const formNavigationProps: FormNavigationButtonsProps = {
     handlePrevForm: goToPrevForm,
     handleNextForm: goToNextForm,
@@ -127,7 +143,20 @@ const SurveysPage = () => {
 
   return (
     <Stack gap="xl">
-      <PageTitle icon={<IconClipboardText size={44} />}>Surveys</PageTitle>
+      <Group align="center">
+        <PageTitle icon={<IconClipboardText size={44} />}>Surveys</PageTitle>
+        <Tooltip label="Restart survey">
+          <ActionIcon
+            variant="subtle"
+            color="gray"
+            size="xl"
+            aria-label="Settings"
+            onClick={handleReset}
+          >
+            <IconRestore style={{ width: "70%", height: "70%" }} stroke={2} />
+          </ActionIcon>
+        </Tooltip>
+      </Group>
       <SurveeFormProvider form={form}>
         <Stepper
           active={activeForm}

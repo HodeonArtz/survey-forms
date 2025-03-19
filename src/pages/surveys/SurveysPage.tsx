@@ -19,6 +19,7 @@ import {
 } from "../../components/form/FormNavigationButtons";
 import {
   formInitialValues,
+  FormValues,
   SurveeFormProvider,
   useSurveeForm,
 } from "../../forms/FormContext";
@@ -31,6 +32,7 @@ import {
   userFormSchema,
 } from "../../forms/Validation";
 import { z, ZodRawShape } from "zod";
+import { readLocalStorageValue, useLocalStorage } from "@mantine/hooks";
 
 const SurveysPage = () => {
   const steps: {
@@ -69,15 +71,24 @@ const SurveysPage = () => {
       schema: filmPreferencesSchema,
     },
   ];
+  const [storedFormValues, storeFormValuesToLocal] =
+    useLocalStorage<FormValues>({
+      key: "user-form",
+      defaultValue: formInitialValues,
+    });
   const [activeForm, setActiveForm] = useState(0);
 
   const form = useSurveeForm({
     mode: "controlled",
-    initialValues: formInitialValues,
+    initialValues:
+      readLocalStorageValue({ key: "user-form" }) || storedFormValues,
     validate:
       activeForm < steps.length
         ? zodResolver(z.object(steps[activeForm].schema))
         : undefined,
+    onValuesChange(values) {
+      storeFormValuesToLocal(values);
+    },
   });
 
   const nextForm = () =>

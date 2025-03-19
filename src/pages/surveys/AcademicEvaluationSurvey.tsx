@@ -40,7 +40,6 @@ const AcademicEvaluationSurvey = () => {
       <Checkbox
         key={form.key("assistedToAllClasses")}
         {...form.getInputProps("assistedToAllClasses")}
-        defaultChecked
         label={`I ${
           form.getValues().assistedToAllClasses ? "assisted" : "did not assist"
         } to all classes`}

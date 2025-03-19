@@ -41,7 +41,7 @@ export const academicEvaluationSchema = {
     .number()
     .min(1, { message: "Your rating can't be below 1" })
     .max(5, { message: "Your rating can't be above 5" }),
-  classAssistance: z.boolean(),
+  assistedToAllClasses: z.boolean(),
   preferredSchedules: z
     .array(z.enum(["monday", "tuesday", "wednesday", "thursday", "friday"]))
     .min(1, "Select at least 1 option")

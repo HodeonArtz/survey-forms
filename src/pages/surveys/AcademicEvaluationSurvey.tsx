@@ -1,7 +1,9 @@
 import { Checkbox, Input, MultiSelect, Rating, Textarea } from "@mantine/core";
 import { useSurveeFormContext } from "../../forms/FormContext";
+import { useTranslation } from "react-i18next";
 
 const AcademicEvaluationSurvey = () => {
+  const { t } = useTranslation();
   const form = useSurveeFormContext();
 
   return (
@@ -9,12 +11,15 @@ const AcademicEvaluationSurvey = () => {
       <Textarea
         key={form.key("yearsComment")}
         {...form.getInputProps("yearsComment")}
-        label="What things could improve this year in general?"
-        placeholder="Give us some suggestions and feedback to improve your learning for this year"
-        resize="vertical"
+        label={t("forms.academicEvaluation.questions.yearsComment.label")}
+        placeholder={t(
+          "forms.academicEvaluation.questions.yearsComment.placeholder"
+        )}
         rows={5}
       />
-      <Input.Wrapper label="Rate this year's material">
+      <Input.Wrapper
+        label={t("forms.academicEvaluation.questions.materialRating.label")}
+      >
         <Rating
           key={form.key("materialRating")}
           {...form.getInputProps("materialRating")}
@@ -29,20 +34,30 @@ const AcademicEvaluationSurvey = () => {
         label="Which schedules do you prefer for class?"
         placeholder="Select 1-2 schedules that work the best for you"
         data={[
-          { value: "monday", label: "Monday: 9 AM - 11 PM" },
-          { value: "tuesday", label: "Tuesday: 3 PM - 5 PM" },
-          { value: "wednesday", label: "Wednesday: 10 AM - 12 PM" },
-          { value: "thursday", label: "Thursday: 1 PM - 3 PM" },
-          { value: "friday", label: "Friday: 4 PM - 6 PM" },
+          { value: "monday", label: `${t("weekday.monday")}: 9 AM - 11 PM` },
+          { value: "tuesday", label: `${t("weekday.tuesday")}: 3 PM - 5 PM` },
+          {
+            value: "wednesday",
+            label: `${t("weekday.wednesday")}: 10 AM - 12 PM`,
+          },
+          { value: "thursday", label: `${t("weekday.thursday")}: 1 PM - 3 PM` },
+          { value: "friday", label: `${t("weekday.friday")}: 4 PM - 6 PM` },
         ]}
         maxValues={2}
       />
       <Checkbox
         key={form.key("assistedToAllClasses")}
         {...form.getInputProps("assistedToAllClasses")}
-        label={`I ${
-          form.getValues().assistedToAllClasses ? "assisted" : "did not assist"
-        } to all classes`}
+        label={t(
+          "forms.academicEvaluation.questions.assistedToAllClasses.label",
+          {
+            assisted: t(
+              `forms.academicEvaluation.questions.assistedToAllClasses.label_context.${
+                form.getValues().assistedToAllClasses
+              }`
+            ),
+          }
+        )}
       />
     </>
   );

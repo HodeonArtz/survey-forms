@@ -11,6 +11,13 @@ export default i18next
     resources: {
       en: {
         translation: {
+          weekday: {
+            monday: "Monday",
+            tuesday: "Tuesday",
+            wednesday: "Wednesday",
+            thursday: "Thursday",
+            friday: "Friday",
+          },
           appearance: {
             theme: {
               lightMode: "Light mode",
@@ -68,8 +75,16 @@ export default i18next
                   placeholder:
                     "Give us some suggestions and feedback to improve your learning for this year",
                 },
-                materialRating: 3,
-                assistedToAllClasses: true,
+                materialRating: {
+                  label: "Rate this year's material",
+                },
+                assistedToAllClasses: {
+                  label: "I {{assisted}} to all classes",
+                  label_context: {
+                    true: "assisted",
+                    false: "did not assist",
+                  },
+                },
                 preferredSchedules: [],
               },
             },

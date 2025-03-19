@@ -31,6 +31,35 @@ export default i18next
               description: "Check your answers",
             },
           },
+          forms: {
+            userDataForm: {
+              userName: {
+                label: "Full name",
+                placeholder: "e.g. John Doe",
+              },
+              userDOB: {
+                label: "Date of birth",
+              },
+              userEmail: {
+                label: "Email",
+              },
+              userGenre: {
+                label: "Genre",
+                placeholder: "Choose one of the options or type other option",
+                data: ["Male", "Female", "I prefer not to say"],
+              },
+              userPreferences: {
+                label: "What do you do in your free time?",
+                placeholder: "Choose the options or write your own option",
+                data: [
+                  "📕 Read books",
+                  "⚽ Sports",
+                  "🛫 Travel",
+                  "🎬 Watch movies",
+                ],
+              },
+            },
+          },
         },
       },
     },

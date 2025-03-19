@@ -1,44 +1,54 @@
 import { Autocomplete, InputBase, TagsInput, TextInput } from "@mantine/core";
 import { IMaskInput } from "react-imask";
 import { useSurveeFormContext } from "../../forms/FormContext";
+import { useTranslation } from "react-i18next";
 
 const UserDataForm = () => {
+  const { t } = useTranslation();
   const form = useSurveeFormContext();
   return (
     <>
       <TextInput
         key={form.key("userName")}
         {...form.getInputProps("userName")}
-        label="Full name"
-        placeholder="e.g. John Doe"
+        label={t("forms.userDataForm.userName.label")}
+        placeholder={t("forms.userDataForm.userName.placeholder")}
       />
       <InputBase
         key={form.key("userDOB")}
         {...form.getInputProps("userDOB")}
         component={IMaskInput}
-        label="Date of birth"
+        label={t("forms.userDataForm.userDOB.label")}
         placeholder="DD/MM/YYYY"
         mask={"00/00/0000"}
       />
       <TextInput
         key={form.key("userEmail")}
         {...form.getInputProps("userEmail")}
-        label="Email"
+        label={t("forms.userDataForm.userEmail.label")}
         placeholder="johndoe@stucom.com"
       />
       <Autocomplete
         key={form.key("userGenre")}
         {...form.getInputProps("userGenre")}
-        label="Genre"
-        placeholder="Choose one of the options or type other option"
-        data={["Male", "Female", "I prefer not to say"]}
+        label={t("forms.userDataForm.userGenre.label")}
+        placeholder={t("forms.userDataForm.userGenre.placeholder")}
+        data={
+          t("forms.userDataForm.userGenre.data", {
+            returnObjects: true,
+          }) as string[]
+        }
       />
       <TagsInput
         key={form.key("userPreferences")}
         {...form.getInputProps("userPreferences")}
-        label="What do you do in your free time?"
-        placeholder="Choose the options or write your own option"
-        data={["📕 Read books", "⚽ Sports", "🛫 Travel", "🎬 Watch movies"]}
+        label={t("forms.userDataForm.userPreferences.label")}
+        placeholder={t("forms.userDataForm.userPreferences.placeholder")}
+        data={
+          t("forms.userDataForm.userPreferences.data", {
+            returnObjects: true,
+          }) as string[]
+        }
         clearable
       />
     </>

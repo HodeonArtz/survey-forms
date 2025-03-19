@@ -70,7 +70,7 @@ export const filmPreferencesSchema = {
     .array(
       z
         .string()
-        .min(10, { message: "Genre must have 10 characters min." })
+        .min(2, { message: "Genre must have 2 characters min." })
         .max(50, { message: "Genre must have 50 characters max." })
     )
     .min(1, "Select at least 1 option"),

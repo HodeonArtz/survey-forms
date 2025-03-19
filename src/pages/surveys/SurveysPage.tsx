@@ -76,7 +76,15 @@ const SurveysPage = () => {
       key: "user-form",
       defaultValue: formInitialValues,
     });
-  const [activeForm, setActiveForm] = useState(0);
+
+  const [storedActiveForm, storeActiveFormToLocal] = useLocalStorage<number>({
+    key: "active-form",
+    defaultValue: 0,
+  });
+
+  const [activeForm, setActiveForm] = useState(
+    readLocalStorageValue<number>({ key: "active-form" })
+  );
 
   const form = useSurveeForm({
     mode: "controlled",
@@ -91,19 +99,28 @@ const SurveysPage = () => {
     },
   });
 
-  const nextForm = () =>
+  const goToNextForm = () => {
       setActiveForm((current) => {
         if (form.validate().hasErrors) {
+          storeActiveFormToLocal(current);
           return current;
         }
+
+        storeActiveFormToLocal(current < steps.length ? current + 1 : current);
+
         return current < steps.length ? current + 1 : current;
-      }),
-    prevForm = () =>
-      setActiveForm((current) => (current > 0 ? current - 1 : current));
+      });
+    },
+    goToPrevForm = () => {
+      setActiveForm((current) => {
+        storeActiveFormToLocal(current > 0 ? current - 1 : current);
+        return current > 0 ? current - 1 : current;
+      });
+    };
 
   const formNavigationProps: FormNavigationButtonsProps = {
-    handlePrevForm: prevForm,
-    handleNextForm: nextForm,
+    handlePrevForm: goToPrevForm,
+    handleNextForm: goToNextForm,
     currentForm: activeForm,
     formsLength: steps.length,
   };

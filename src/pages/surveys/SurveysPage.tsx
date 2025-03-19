@@ -7,7 +7,7 @@ import {
   Stepper,
   Tooltip,
 } from "@mantine/core";
-import { ReactNode, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import UserDataForm from "./UserDataForm";
 import AcademicEvaluationSurvey from "./AcademicEvaluationSurvey";
 import FilmPreferencesSurvey from "./FilmPreferencesSurvey";
@@ -80,25 +80,23 @@ const SurveysPage = () => {
       schema: filmPreferencesSchema,
     },
   ];
-  const [storedFormValues, storeFormValuesToLocal] =
-    useLocalStorage<FormValues>({
-      key: "user-form",
-      defaultValue: formInitialValues,
-    });
+  const [, storeFormValuesToLocal] = useLocalStorage<FormValues>({
+    key: "user-form",
+    defaultValue: formInitialValues,
+  });
 
-  const [storedActiveForm, storeActiveFormToLocal] = useLocalStorage<number>({
+  const [, storeActiveFormToLocal] = useLocalStorage<number>({
     key: "active-form",
     defaultValue: 0,
   });
 
   const [activeForm, setActiveForm] = useState(
-    readLocalStorageValue<number>({ key: "active-form" }) || storedActiveForm
+    readLocalStorageValue<number>({ key: "active-form" })
   );
 
   const form = useSurveeForm({
     mode: "controlled",
-    initialValues:
-      readLocalStorageValue({ key: "user-form" }) || storedFormValues,
+    initialValues: readLocalStorageValue({ key: "user-form" }),
     validate:
       activeForm < steps.length
         ? zodResolver(z.object(steps[activeForm].schema))
@@ -110,22 +108,18 @@ const SurveysPage = () => {
 
   const goToNextForm = () => {
       setActiveForm((current) => {
-        if (form.validate().hasErrors) {
-          storeActiveFormToLocal(current);
-          return current;
-        }
-
-        storeActiveFormToLocal(current < steps.length ? current + 1 : current);
+        if (form.validate().hasErrors) return current;
 
         return current < steps.length ? current + 1 : current;
       });
     },
     goToPrevForm = () => {
-      setActiveForm((current) => {
-        storeActiveFormToLocal(current > 0 ? current - 1 : current);
-        return current > 0 ? current - 1 : current;
-      });
+      setActiveForm((current) => (current > 0 ? current - 1 : current));
     };
+
+  useEffect(() => {
+    storeActiveFormToLocal(activeForm);
+  }, [activeForm, storeActiveFormToLocal]);
 
   const handleReset = () => {
     form.reset();

@@ -74,7 +74,10 @@ const SurveysPage = () => {
   const form = useSurveeForm({
     mode: "controlled",
     initialValues: formInitialValues,
-    validate: zodResolver(z.object(steps[activeForm].schema)),
+    validate:
+      activeForm < steps.length
+        ? zodResolver(z.object(steps[activeForm].schema))
+        : undefined,
   });
 
   const nextForm = () =>

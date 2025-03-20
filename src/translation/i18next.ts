@@ -161,6 +161,7 @@ export default i18next
                 },
                 frequencyWatchingFilms: {
                   label: "How often do you watch movies?",
+                  labelAlternative: "Your frequency watching movies",
                   data: ["Never", "Barely", "Sometimes", "Often", "Always"],
                 },
               },

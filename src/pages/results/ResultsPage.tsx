@@ -5,6 +5,7 @@ import { IconChartHistogram } from "@tabler/icons-react";
 import UserData from "./UserData";
 import AcademicEvaluation from "./AcademicEvaluation";
 import TechPreferences from "./TechPreferences";
+import FilmPreferences from "./FilmPreferences";
 
 const ResultsPage = () => {
   const { t } = useTranslation();
@@ -19,10 +20,11 @@ const ResultsPage = () => {
           {t("routes.results.description")}
         </Title>
       </Stack>
-      <Stack gap={"lg"}>
+      <Stack gap="xl">
         <UserData />
         <AcademicEvaluation />
         <TechPreferences />
+        <FilmPreferences />
       </Stack>
     </Stack>
   );

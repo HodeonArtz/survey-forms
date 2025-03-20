@@ -2,6 +2,7 @@ import { MultiSelect, Select, Textarea } from "@mantine/core";
 import { useSurveeFormContext } from "../../forms/FormContext";
 import { arrayFrom } from "../../library/arrays";
 import { useTranslation } from "react-i18next";
+import { OSDisplayMap } from "../../forms/techPreferences";
 
 const TechPreferencesSurvey = () => {
   const form = useSurveeFormContext();
@@ -25,11 +26,7 @@ const TechPreferencesSurvey = () => {
         placeholder={t(
           "forms.techPreferences.questions.favoriteOS.placeholder"
         )}
-        data={[
-          { value: "windows", label: "💻 Windows" },
-          { value: "macos", label: "🍎 MacOS" },
-          { value: "linux", label: "🐧 Linux" },
-        ]}
+        data={OSDisplayMap}
         allowDeselect={false}
       />
       <MultiSelect
@@ -55,7 +52,7 @@ const TechPreferencesSurvey = () => {
           "forms.techPreferences.questions.learningTime.placeholder"
         )}
         data={arrayFrom(10).map((number) => ({
-          label: t("time.hour", { hours: number }),
+          label: t("time.hour", { count: number }),
           value: `${number}`,
         }))}
         allowDeselect={false}

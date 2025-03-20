@@ -12,8 +12,8 @@ export default i18next
       en: {
         translation: {
           time: {
-            hour: "{{hours}} hour",
-            hour_plural: "{{hours}} hours",
+            hour_one: "{{count}} hour",
+            hour_other: "{{count}} hours",
           },
           weekday: {
             monday: "Monday",
@@ -128,6 +128,7 @@ export default i18next
                 },
                 favoriteOS: {
                   label: "Select your favorite OS",
+                  labelAlternative: "Your favorite OS",
                   placeholder: "Select an OS",
                 },
                 userDevices: {

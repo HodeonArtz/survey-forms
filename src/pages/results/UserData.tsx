@@ -19,7 +19,7 @@ const UserData = () => {
       <ResultFormTitle icon={<IconUser size={34} />}>
         {t("forms.userDataForm.title")}
       </ResultFormTitle>
-      <Stack gap="sm">
+      <Stack gap="md">
         <ResultQuestion question={t(`${formPath}.userName.label`)}>
           {form.userName}
         </ResultQuestion>

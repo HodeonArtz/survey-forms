@@ -102,10 +102,11 @@ export default i18next
                 assistedToAllClasses: {
                   labelDefault: "I assisted to all classes",
                   label: "I {{assisted}} to all classes",
+                  labelAlternative: "Did you assist to all classes?",
                   ego: "I",
                   label_context: {
                     true: "assisted",
-                    false: "did not assist",
+                    false: "didn't assist",
                   },
                 },
               },

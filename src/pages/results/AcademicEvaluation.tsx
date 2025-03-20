@@ -11,7 +11,7 @@ const formPath = "forms.academicEvaluation";
 const questionsPath = `${formPath}.questions`;
 
 const AcademicEvaluation = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const form = readLocalStorageValue({ key: "user-form" }) as FormValues;
 
   return (
@@ -19,7 +19,7 @@ const AcademicEvaluation = () => {
       <ResultFormTitle icon={<IconSchool size={34} />}>
         {t(`${formPath}.title`)}
       </ResultFormTitle>
-      <Stack gap="sm">
+      <Stack gap="md">
         <ResultQuestion question={t(`${questionsPath}.yearsComment.label`)}>
           {form.yearsComment}
         </ResultQuestion>

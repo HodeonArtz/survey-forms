@@ -10,7 +10,9 @@ const ResultFormTitle = ({ children, icon }: Props) => {
   return (
     <Group>
       {icon}
-      <Title size="h3">{children}</Title>
+      <Title size="h3" fw="bolder">
+        {children}
+      </Title>
     </Group>
   );
 };

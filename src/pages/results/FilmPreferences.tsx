@@ -2,12 +2,12 @@ import { Pill, PillGroup, Stack } from "@mantine/core";
 import { FormValues } from "../../forms/FormContext";
 import { readLocalStorageValue } from "@mantine/hooks";
 import ResultFormTitle from "../../components/ResultFormTitle";
-import { IconSchool } from "@tabler/icons-react";
 import { useTranslation } from "react-i18next";
 import ResultQuestion from "../../components/ResultQuestion";
 import ResultFormContainer from "../../components/ResultFormContainer";
+import { IconMovie } from "@tabler/icons-react";
 
-const formPath = "forms.filmPreferences ";
+const formPath = "forms.filmPreferences";
 const questionsPath = `${formPath}.questions`;
 
 const FilmPreferences = () => {
@@ -17,7 +17,7 @@ const FilmPreferences = () => {
 
   return (
     <ResultFormContainer>
-      <ResultFormTitle icon={<IconSchool size={34} />}>
+      <ResultFormTitle icon={<IconMovie size={34} />}>
         {t(`${formPath}.title`)}
       </ResultFormTitle>
       <Stack gap="lg">

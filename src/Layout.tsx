@@ -5,6 +5,7 @@ import BrandLogo from "./components/layout/BrandLogo";
 import ThemeModeButton from "./components/layout/ThemeModeButton";
 import Links from "./components/navbar/Links";
 import { Footer } from "./components/footer/Footer";
+import LanguageToggler from "./components/LanguageToggler";
 
 const Layout = () => {
   const [mobileOpened, { toggle: toggleMobile }] = useDisclosure();
@@ -37,7 +38,10 @@ const Layout = () => {
             />
             <BrandLogo />
           </Group>
-          <ThemeModeButton />
+          <Group gap="xs">
+            <LanguageToggler />
+            <ThemeModeButton />
+          </Group>
         </Group>
       </AppShell.Header>
       <AppShell.Navbar pt="sm">

@@ -1,6 +1,8 @@
 import { isValid, parse } from "date-fns";
 import { z } from "zod";
 
+// aquí definimos los schemas de validaciones para cada formulario, un schema es un objeto que indica qué tipo y cómo tiene que validarse cada valor. Todo gracias al objeto z de zod
+
 export const userFormSchema = {
   userName: z
     .string()

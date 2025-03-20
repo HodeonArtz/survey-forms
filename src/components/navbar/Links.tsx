@@ -20,6 +20,7 @@ interface NavLinkData {
 const Links = () => {
   const { t } = useTranslation();
 
+  // Hacemos un mapeo de las rutas para asignarle a cada su label, la ruta en sí, su icono y color
   const navLinks: NavLinkData[] = [
     {
       label: t("routes.home.label"),
@@ -43,8 +44,10 @@ const Links = () => {
     },
   ];
 
+  // utilizamos el hook de useLocation para más tarde saber en qué ruta estamos
   const { pathname } = useLocation();
 
+  // guardamos en una variable y mostramos los enlaces a cada ruta en el componente
   const links = navLinks.map(({ href, label, description, color, ...item }) => (
     <NavLink
       to={href}

@@ -9,6 +9,7 @@ import cx from "clsx";
 import classes from "../../themes.module.css";
 import { useTranslation } from "react-i18next";
 
+// botón que permite cambiar el modo oscuro/claro de la página
 const ThemeModeButton = () => {
   const { t } = useTranslation();
 

@@ -1,5 +1,6 @@
 import { createFormContext } from "@mantine/form";
 
+// Aqui definimos qué propiedades tienen todos los formularios y de qué tipo tienen que ser cada uno
 export interface FormValues {
   userName: string;
   userDOB: string;
@@ -26,9 +27,14 @@ export interface FormValues {
   frequencyWatchingFilms: number;
 }
 
+// Aquí creamos un contexto para gestionar los formularios desde varios componentes diferentes y evitar hacer prop drilling.
+// SurveeFormProvider es el proveedor que permitirá indicar qué parte de los componentes estarán relacionados a los estados del formulario
+// useSurveeFormContext es el hook que utilizaremos para conseguir el contexto del formulario
+// useSurveeForm es el hook que nos permitirá configurar y setear los valores en el componente del formulario
 export const [SurveeFormProvider, useSurveeFormContext, useSurveeForm] =
   createFormContext<FormValues>();
 
+// valores por defecto para el formulario entero
 export const formInitialValues: FormValues = {
   userName: "",
   userDOB: "",

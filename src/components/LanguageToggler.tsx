@@ -9,6 +9,7 @@ const LanguageToggler = () => {
     <Tooltip label={"Change language"} withArrow>
       <ActionIcon
         onClick={() => {
+          // hacemos un "toggle" para intercambiar el idioma de la página de español a inglés y viceversa
           if (i18n.language === "en") i18n.changeLanguage("es");
           else i18n.changeLanguage("en");
         }}

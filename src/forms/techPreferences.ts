@@ -1,3 +1,4 @@
+// Mapeo para los valores del formulario de tecnología
 export const OSDisplayMap = [
   { value: "windows", label: "💻 Windows" },
   { value: "macos", label: "🍎 MacOS" },

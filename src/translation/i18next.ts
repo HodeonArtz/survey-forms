@@ -100,7 +100,9 @@ export default i18next
                   label: "Rate this year's material",
                 },
                 assistedToAllClasses: {
+                  labelDefault: "I assisted to all classes",
                   label: "I {{assisted}} to all classes",
+                  ego: "I",
                   label_context: {
                     true: "assisted",
                     false: "did not assist",

@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import PageTitle from "../../components/layout/PageTitle";
 import { IconChartHistogram } from "@tabler/icons-react";
 import UserData from "./UserData";
+import AcademicEvaluation from "./AcademicEvaluation";
 
 const ResultsPage = () => {
   const { t } = useTranslation();
@@ -19,6 +20,7 @@ const ResultsPage = () => {
       </Stack>
       <Stack gap={"lg"}>
         <UserData />
+        <AcademicEvaluation />
       </Stack>
     </Stack>
   );

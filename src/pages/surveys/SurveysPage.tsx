@@ -45,6 +45,7 @@ import { readLocalStorageValue, useLocalStorage } from "@mantine/hooks";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 
+// Página que muestra los formularios de la página
 const SurveysPage = () => {
   const { t } = useTranslation();
 
@@ -112,18 +113,20 @@ const SurveysPage = () => {
     readLocalStorageValue<number>({ key: "active-form" })
   );
 
+  // Usamos el hook definido en FormContext.tsx para poder gestionar y configurar la manera en como controlamos y gestionamos los valores de los inputs de cada formulario
   const form = useSurveeForm({
     mode: "controlled",
     initialValues: readLocalStorageValue({ key: "user-form" }),
     validate:
       activeForm < steps.length
         ? zodResolver(z.object(steps[activeForm].schema))
-        : undefined,
+        : undefined, // Dinámicamente realizamos la validación correspondiente al formulario que se está mostrando actualmente
     onValuesChange(values) {
-      storeFormValuesToLocal(values);
+      storeFormValuesToLocal(values); // guardamos los valores en localStoarge cada vez que hagamos un cambio en el formulario entero
     },
   });
 
+  // funcion par poder navegar al siguiente formulario
   const goToNextForm = () => {
       setActiveForm((current) => {
         if (form.validate().hasErrors) return current;
@@ -131,14 +134,17 @@ const SurveysPage = () => {
         return current < steps.length ? current + 1 : current;
       });
     },
+    // funcion para poder navegar al anterior formulario
     goToPrevForm = () => {
       setActiveForm((current) => (current > 0 ? current - 1 : current));
     };
 
+  // este useEffect se ejecutará cada vez que navegemos entre los formularios para guardar en qué formulario estamos actualmente
   useEffect(() => {
     storeActiveFormToLocal(activeForm);
   }, [activeForm, storeActiveFormToLocal]);
 
+  // función para reestablecer el formulario
   const handleReset = () => {
     form.reset();
     form.setValues(formInitialValues);
@@ -147,15 +153,18 @@ const SurveysPage = () => {
     storeIsFormSubmittedToLocal(false);
   };
 
+  // función para enviar el formulario y mostrar los resultados
   const handleSubmit = () => {
     storeIsFormSubmittedToLocal(true);
     navigateTo("/results");
   };
 
+  // función para cancelar el envío del formulario
   const handleCancelSubmission = () => {
     storeIsFormSubmittedToLocal(false);
   };
 
+  // Props que utilizaremos para gestionar la navegación entre formularios
   const formNavigationProps: FormNavigationButtonsProps = {
     handlePrevForm: goToPrevForm,
     handleNextForm: goToNextForm,

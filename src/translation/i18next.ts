@@ -43,6 +43,8 @@ export default i18next
             },
           },
           forms: {
+            noResults: "No survey submitted. Start answering the surveys ",
+            here: "here",
             title: "Surveys",
             buttons: {
               restartForm: "Restart survey",

@@ -21,7 +21,7 @@ const TechPreferences = () => {
       <ResultFormTitle icon={<IconDeviceDesktop size={34} />}>
         {t(`${formPath}.title`)}
       </ResultFormTitle>
-      <Stack gap="lg">
+      <Stack gap="xl">
         <ResultQuestion question={t(`${questionsPath}.techComment.label`)}>
           {form.techComment}
         </ResultQuestion>

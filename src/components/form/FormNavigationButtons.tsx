@@ -1,11 +1,10 @@
 import { ActionIcon, Button, Group, MantineSize } from "@mantine/core";
 import { IconArrowLeft, IconArrowRight, IconCheck } from "@tabler/icons-react";
-import { MouseEventHandler } from "react";
 import { useTranslation } from "react-i18next";
 
 export interface FormNavigationButtonsProps {
-  handlePrevForm: MouseEventHandler<HTMLButtonElement>;
-  handleNextForm: MouseEventHandler<HTMLButtonElement>;
+  handlePrevForm: () => void;
+  handleNextForm: () => void;
   formsLength: number;
   currentForm: number;
   showArrows?: boolean;

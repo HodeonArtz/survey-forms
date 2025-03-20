@@ -20,7 +20,7 @@ const FilmPreferences = () => {
       <ResultFormTitle icon={<IconMovie size={34} />}>
         {t(`${formPath}.title`)}
       </ResultFormTitle>
-      <Stack gap="lg">
+      <Stack gap="xl">
         <ResultQuestion question={t(`${questionsPath}.filmGenres.label`)}>
           <PillGroup gap="16">
             {form.filmGenres.map((preference) => (

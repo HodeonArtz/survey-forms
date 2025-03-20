@@ -28,7 +28,7 @@ const AcademicEvaluation = () => {
       <ResultFormTitle icon={<IconSchool size={34} />}>
         {t(`${formPath}.title`)}
       </ResultFormTitle>
-      <Stack gap="lg">
+      <Stack gap="xl">
         <ResultQuestion question={t(`${questionsPath}.yearsComment.label`)}>
           {form.yearsComment}
         </ResultQuestion>

@@ -43,9 +43,11 @@ import {
 import { z, ZodRawShape } from "zod";
 import { readLocalStorageValue, useLocalStorage } from "@mantine/hooks";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 
 const SurveysPage = () => {
   const { t } = useTranslation();
+  const navigateTo = useNavigate();
   const steps: {
     label: string;
     description?: string;
@@ -92,6 +94,11 @@ const SurveysPage = () => {
     defaultValue: 0,
   });
 
+  const [, storeIsFormSubmittedToLocal] = useLocalStorage<boolean>({
+    key: "is-form-submitted",
+    defaultValue: false,
+  });
+
   const [activeForm, setActiveForm] = useState(
     readLocalStorageValue<number>({ key: "active-form" })
   );
@@ -128,6 +135,16 @@ const SurveysPage = () => {
     form.setValues(formInitialValues);
     setActiveForm(0);
     storeActiveFormToLocal(0);
+    storeIsFormSubmittedToLocal(false);
+  };
+
+  const handleSubmit = () => {
+    storeIsFormSubmittedToLocal(true);
+    navigateTo("/results");
+  };
+
+  const handleCancelSubmission = () => {
+    storeIsFormSubmittedToLocal(false);
   };
 
   const formNavigationProps: FormNavigationButtonsProps = {
@@ -158,7 +175,10 @@ const SurveysPage = () => {
       <SurveeFormProvider form={form}>
         <Stepper
           active={activeForm}
-          onStepClick={setActiveForm}
+          onStepClick={(stepIndex) => {
+            setActiveForm(stepIndex);
+            handleCancelSubmission();
+          }}
           size="sm"
           iconSize="32"
           allowNextStepsSelect={false}
@@ -193,8 +213,16 @@ const SurveysPage = () => {
             <Container size="xs" mt="sm">
               <CompletedScreen />
               <Group align="center" justify="space-between">
-                <FormNavigationButtons {...formNavigationProps} />
-                <Button mt="xs">Submit</Button>
+                <FormNavigationButtons
+                  {...formNavigationProps}
+                  handlePrevForm={() => {
+                    formNavigationProps.handlePrevForm();
+                    handleCancelSubmission();
+                  }}
+                />
+                <Button mt="xs" onClick={handleSubmit}>
+                  Submit
+                </Button>
               </Group>
             </Container>
           </Stepper.Completed>

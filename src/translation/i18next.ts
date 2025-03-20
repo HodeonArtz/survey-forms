@@ -2,13 +2,17 @@ import i18next from "i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
 import { initReactI18next } from "react-i18next";
 
+// En este archivo poodremos configurar la parte de traducción de la página
+
 export default i18next
   .use(LanguageDetector)
   .use(initReactI18next)
   .init({
-    debug: true,
-    fallbackLng: "en",
+    debug: true, // Habilitamos el debug para poder solucionar mejor los problemas que vayan saliendo
+    fallbackLng: "en", // Escogemos el idioma por defecto para aquellas partes de la página
+    // que no tengan su traducción para el lenguaje utilizado por el navegador
     resources: {
+      // en resources tendremos todas las traducciones para el contenido de la página
       en: {
         translation: {
           time: {

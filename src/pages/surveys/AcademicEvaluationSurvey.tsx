@@ -2,6 +2,7 @@ import { Checkbox, Input, MultiSelect, Rating, Textarea } from "@mantine/core";
 import { useSurveeFormContext } from "../../forms/FormContext";
 import { useTranslation } from "react-i18next";
 
+// Componente que muestra el formulario para la evaluación académica
 const AcademicEvaluationSurvey = () => {
   const { t } = useTranslation();
   const form = useSurveeFormContext();

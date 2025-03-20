@@ -12,6 +12,7 @@ import { Link } from "react-router-dom";
 const ResultsPage = () => {
   const { t } = useTranslation();
 
+  // conseguimos el valor guardado en localStorage que indica si el usuario ha enviado el formulario o no
   const isFormSubmitted = readLocalStorageValue<boolean>({
     key: "is-form-submitted",
   });
@@ -27,6 +28,7 @@ const ResultsPage = () => {
         </Title>
       </Stack>
 
+      {/* Mostramos los resultados en base a si el usuario ha enviado el formulario */}
       {isFormSubmitted ? <Results /> : <FormNotSubmittedMesage />}
     </Stack>
   );
@@ -34,6 +36,7 @@ const ResultsPage = () => {
 
 export default ResultsPage;
 
+/* Componente que permite mostrar los resultados de cada formulario */
 const Results = () => {
   return (
     <Stack gap="xl">
@@ -45,6 +48,7 @@ const Results = () => {
   );
 };
 
+/* Componente que muestra un mensaje para cuando el usuario no haya enviad un formulario aún */
 const FormNotSubmittedMesage = () => {
   const { t } = useTranslation();
   return (

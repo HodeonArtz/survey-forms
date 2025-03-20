@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import SurveysPage from "./pages/surveys/SurveysPage";
 import ResultsPage from "./pages/results/ResultsPage";
 
+// Definimos las rutas asignando a cada una el componente que queremos "renderizar"
 const routes: RouteObject[] = [
   {
     path: "/",

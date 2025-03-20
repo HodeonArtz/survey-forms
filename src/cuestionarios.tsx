@@ -6,6 +6,8 @@ import {
 } from "@tabler/icons-react";
 import { HTMLInputTypeAttribute, ReactNode } from "react";
 
+// ARCHIVO NO UTILIZADO
+
 interface BaseQuestion {
   id: string;
   type: "text" | "select" | "check" | "textarea";

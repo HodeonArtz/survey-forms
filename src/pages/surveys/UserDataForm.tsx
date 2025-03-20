@@ -4,12 +4,17 @@ import { useSurveeFormContext } from "../../forms/FormContext";
 import { useTranslation } from "react-i18next";
 
 const UserDataForm = () => {
+  // usamos el hook de i18n para conseguir la traduccion de ciertos textos
   const { t } = useTranslation();
+
+  // usamos el hook que hemos definido en FormContext.tsx para gestionar los valores del formuario
   const form = useSurveeFormContext();
   return (
     <>
       <TextInput
+        // form tiene una propiedad que es "key" que permitirá a nuestro "gestor" de formularios, poder identificar cada input
         key={form.key("userName")}
+        // con el spread operator conseguimos los props necesarios para asignarlo a input para así poder gestionar el input acorde a la propiedad definida en FormValues
         {...form.getInputProps("userName")}
         label={t("forms.userDataForm.questions.userName.label")}
         placeholder={t("forms.userDataForm.questions.userName.placeholder")}
@@ -17,7 +22,7 @@ const UserDataForm = () => {
       <InputBase
         key={form.key("userDOB")}
         {...form.getInputProps("userDOB")}
-        component={IMaskInput}
+        component={IMaskInput} // Utilizamos el componente de IMaskInput para añadir una "máscara" mientras el usuario va escribiendo su fecha de nacimiento
         label={t("forms.userDataForm.questions.userDOB.label")}
         placeholder="DD/MM/YYYY"
         mask={"00/00/0000"}

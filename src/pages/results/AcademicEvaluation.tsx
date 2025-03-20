@@ -10,9 +10,11 @@ import ResultFormContainer from "../../components/ResultFormContainer";
 const formPath = "forms.academicEvaluation";
 const questionsPath = `${formPath}.questions`;
 
+// Componente que muestra los resultados de la evaluación académica
 const AcademicEvaluation = () => {
   const { t } = useTranslation();
 
+  /* Esta variable nos permitirá mapear los valores de los días de la semana para poder mostrar los horarios */
   const schedules = {
     monday: `${t("weekday.monday")}: 9 AM - 11 PM`,
     tuesday: `${t("weekday.tuesday")}: 3 PM - 5 PM`,

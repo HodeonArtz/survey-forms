@@ -47,7 +47,11 @@ import { useNavigate } from "react-router-dom";
 
 const SurveysPage = () => {
   const { t } = useTranslation();
+
+  // Utilizamos el hook useNavigate para poder utilizar su función y envíar el usuario a la ruta que indiquemos como parámetro en la función
   const navigateTo = useNavigate();
+
+  // esta variable lo utilizamos para mapear los componentes de los formularios, de manera que podamos asignar a cada uno su icono, label, description, el comopnente del formulario en sí y su validación.
   const steps: {
     label: string;
     description?: string;
@@ -84,21 +88,26 @@ const SurveysPage = () => {
       schema: filmPreferencesSchema,
     },
   ];
+
+  // utilizamos useLocalStorage para guardar los valores del formulario en localStorage
   const [, storeFormValuesToLocal] = useLocalStorage<FormValues>({
     key: "user-form",
     defaultValue: formInitialValues,
   });
 
+  // utilizamos useLocalStorage para guardar en qué formulario está el usuario en localStorage
   const [, storeActiveFormToLocal] = useLocalStorage<number>({
     key: "active-form",
     defaultValue: 0,
   });
 
+  // utilizamos useLocalStorage para guardar si el usuario ha enviadoe el formulario en localStorage
   const [, storeIsFormSubmittedToLocal] = useLocalStorage<boolean>({
     key: "is-form-submitted",
     defaultValue: false,
   });
 
+  // guardamos el estado de la posición del formulario actual para navegar entre los formularios, y de paso, asignamos el valor que viene del localStorage
   const [activeForm, setActiveForm] = useState(
     readLocalStorageValue<number>({ key: "active-form" })
   );

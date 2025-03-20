@@ -11,6 +11,7 @@ import { IconMoodSad, IconMoodSmile } from "@tabler/icons-react";
 import { useSurveeFormContext } from "../../forms/FormContext";
 import { useTranslation } from "react-i18next";
 
+// Componente que muestra el formulario para las preferencias en películas
 const FilmPreferencesSurvey = () => {
   const form = useSurveeFormContext();
   const { t } = useTranslation();

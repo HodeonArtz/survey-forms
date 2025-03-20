@@ -11,6 +11,7 @@ import { devicesMap, OSDisplayMap } from "../../forms/techPreferences";
 const formPath = "forms.techPreferences";
 const questionsPath = `${formPath}.questions`;
 
+// Componente que muestra los resultados de la preferencia en tecnología
 const TechPreferences = () => {
   const { t } = useTranslation();
 

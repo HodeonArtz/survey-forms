@@ -10,6 +10,7 @@ import { IconMovie } from "@tabler/icons-react";
 const formPath = "forms.filmPreferences";
 const questionsPath = `${formPath}.questions`;
 
+// Componente que muestra los resultados de la preferencia en películas
 const FilmPreferences = () => {
   const { t } = useTranslation();
 

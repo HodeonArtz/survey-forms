@@ -10,8 +10,11 @@ import { getFormattedDate } from "../../library/datetimes";
 
 const formPath = "forms.userDataForm.questions";
 
+// Componente que muestra los resultados de los datos personales
 const UserData = () => {
   const { t, i18n } = useTranslation();
+
+  // Pillamos los datos envíados por el usuario que estan guardados en el localstorage
   const form = readLocalStorageValue({ key: "user-form" }) as FormValues;
 
   return (
@@ -34,6 +37,7 @@ const UserData = () => {
         </ResultQuestion>
         <ResultQuestion question={t(`${formPath}.userPreferences.label`)}>
           <PillGroup gap="16">
+            {/* Cogemos el array de datos y mostramos cada dato dentro de un componente Pill */}
             {form.userPreferences.map((preference) => (
               <Pill size="lg">{preference}</Pill>
             ))}

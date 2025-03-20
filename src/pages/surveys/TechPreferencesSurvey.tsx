@@ -4,6 +4,7 @@ import { arrayFrom } from "../../library/arrays";
 import { useTranslation } from "react-i18next";
 import { OSDisplayMap } from "../../forms/techPreferences";
 
+// Componente que muestra el formulario para las preferencias en tecnología
 const TechPreferencesSurvey = () => {
   const form = useSurveeFormContext();
   const { t } = useTranslation();

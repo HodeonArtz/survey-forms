@@ -43,7 +43,21 @@ export default i18next
             },
           },
           forms: {
+            title: "Surveys",
+            buttons: {
+              restartForm: "Restart survey",
+              prevForm: "Back",
+              submitForm: "Complete",
+              nextForm: "Next",
+            },
+            completedScreen: {
+              title: "1 click away and you're done!",
+              subtitle:
+                "You can go back and check for any mistakes before submitting your answers",
+            },
             userDataForm: {
+              title: "Personal User Data",
+              description: "Submit your personal information",
               questions: {
                 userName: {
                   label: "Full name",
@@ -73,6 +87,8 @@ export default i18next
               },
             },
             academicEvaluation: {
+              title: "Academic Evaluation",
+              description: "Questions about this school year",
               questions: {
                 yearsComment: {
                   label: "What things could improve this year in general?",
@@ -92,6 +108,8 @@ export default i18next
               },
             },
             techPreferences: {
+              title: "Tech Prefences",
+              description: "Questions about technology",
               questions: {
                 techComment: {
                   label:
@@ -114,6 +132,8 @@ export default i18next
               },
             },
             filmPreferences: {
+              title: "Film Prefences",
+              description: "Questions about films",
               questions: {
                 filmGenres: {
                   label: "What film genres do you like?",

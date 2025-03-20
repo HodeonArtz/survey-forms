@@ -42,8 +42,10 @@ import {
 } from "../../forms/Validation";
 import { z, ZodRawShape } from "zod";
 import { readLocalStorageValue, useLocalStorage } from "@mantine/hooks";
+import { useTranslation } from "react-i18next";
 
 const SurveysPage = () => {
+  const { t } = useTranslation();
   const steps: {
     label: string;
     description?: string;
@@ -53,29 +55,29 @@ const SurveysPage = () => {
   }[] = [
     {
       icon: <IconUser size={18} />,
-      label: "Personal User Data",
-      description: "Submit your personal information",
+      label: t("forms.userDataForm.title"),
+      description: t("forms.userDataForm.description"),
       Content: <UserDataForm />,
       schema: userFormSchema,
     },
     {
       icon: <IconSchool size={18} />,
-      label: "Academic Evaluation",
-      description: "Questions about this school year",
+      label: t("forms.academicEvaluation.title"),
+      description: t("forms.academicEvaluation.description"),
       Content: <AcademicEvaluationSurvey />,
       schema: academicEvaluationSchema,
     },
     {
       icon: <IconDeviceDesktop size={18} />,
-      label: "Tech Prefences",
-      description: "Questions about technology",
+      label: t("forms.techPreferences.title"),
+      description: t("forms.techPreferences.description"),
       Content: <TechPreferencesSurvey />,
       schema: techPreferencesSchema,
     },
     {
       icon: <IconMovie size={18} />,
-      label: "Film Prefences",
-      description: "Questions about films",
+      label: t("forms.filmPreferences.title"),
+      description: t("forms.filmPreferences.description"),
       Content: <FilmPreferencesSurvey />,
       schema: filmPreferencesSchema,
     },
@@ -138,13 +140,15 @@ const SurveysPage = () => {
   return (
     <Stack gap="xl">
       <Group align="center">
-        <PageTitle icon={<IconClipboardText size={44} />}>Surveys</PageTitle>
-        <Tooltip label="Restart survey">
+        <PageTitle icon={<IconClipboardText size={44} />}>
+          {t("forms.title")}
+        </PageTitle>
+        <Tooltip label={t("forms.buttons.restartForm")}>
           <ActionIcon
             variant="subtle"
             color="gray"
             size="xl"
-            aria-label="Settings"
+            aria-label={t("forms.buttons.restartForm")}
             onClick={handleReset}
           >
             <IconRestore style={{ width: "70%", height: "70%" }} stroke={2} />

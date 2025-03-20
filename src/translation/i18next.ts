@@ -57,7 +57,8 @@ export default i18next
             },
             userDataForm: {
               title: "Personal User Data",
-              description: "Submit your personal information",
+              description:
+                "Questions about your personal information and preferences",
               questions: {
                 userName: {
                   label: "Full name",
@@ -123,7 +124,7 @@ export default i18next
                 },
                 userDevices: {
                   label: "Which devices do you normally use?",
-                  placeholder: "Select 2 devices that you use",
+                  placeholder: "Select 1-2 devices that you use",
                 },
                 learningTime: {
                   label: "How many hours do you dedicate on learning tech?",

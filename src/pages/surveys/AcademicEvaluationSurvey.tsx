@@ -31,8 +31,10 @@ const AcademicEvaluationSurvey = () => {
       <MultiSelect
         key={form.key("preferredSchedules")}
         {...form.getInputProps("preferredSchedules")}
-        label="Which schedules do you prefer for class?"
-        placeholder="Select 1-2 schedules that work the best for you"
+        label={t("forms.academicEvaluation.questions.preferredSchedules.label")}
+        placeholder={t(
+          "forms.academicEvaluation.questions.preferredSchedules.placeholder"
+        )}
         data={[
           { value: "monday", label: `${t("weekday.monday")}: 9 AM - 11 PM` },
           { value: "tuesday", label: `${t("weekday.tuesday")}: 3 PM - 5 PM` },

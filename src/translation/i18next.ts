@@ -99,6 +99,11 @@ export default i18next
                 materialRating: {
                   label: "Rate this year's material",
                 },
+                preferredSchedules: {
+                  label: "Which schedules do you prefer for class?",
+                  placeholder:
+                    "Select 1-2 schedules that work the best for you",
+                },
                 assistedToAllClasses: {
                   labelDefault: "I assisted to all classes",
                   label: "I {{assisted}} to all classes",

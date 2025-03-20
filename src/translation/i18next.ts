@@ -42,6 +42,16 @@ export default i18next
               description: "Check your answers",
             },
           },
+          home: {
+            title: {
+              weCollect: "We collect",
+              yourData: "your data",
+              toImprove: "to improve our products",
+            },
+            subtitle:
+              "Submit a survey about general preferences and we will customize our products to your liking. Be free to answer anything.",
+            startButton: "Start Now",
+          },
           forms: {
             noResults: "No survey submitted. Start answering the surveys ",
             here: "here",
@@ -165,6 +175,177 @@ export default i18next
                   label: "How often do you watch movies?",
                   labelAlternative: "Your frequency watching movies",
                   data: ["Never", "Barely", "Sometimes", "Often", "Always"],
+                },
+              },
+            },
+          },
+        },
+      },
+      es: {
+        translation: {
+          time: {
+            hour_one: "{{count}} hora",
+            hour_other: "{{count}} horas",
+          },
+          weekday: {
+            monday: "Lunes",
+            tuesday: "Martes",
+            wednesday: "Miércoles",
+            thursday: "Jueves",
+            friday: "Viernes",
+          },
+          appearance: {
+            theme: {
+              lightMode: "Modo claro",
+              darkMode: "Modo oscuro",
+            },
+          },
+          routes: {
+            home: {
+              label: "Inicio",
+              description: "Página de inicio de Surveeform",
+            },
+            surveys: {
+              label: "Encuestas",
+              description: "Responde algunas preguntas",
+            },
+            results: {
+              label: "Resultados",
+              description: "Mira tus respuestas",
+            },
+          },
+          home: {
+            title: {
+              weCollect: "Recolectamos",
+              yourData: "tus datos",
+              toImprove: "para mejorar nuestros productos",
+            },
+            subtitle:
+              "Completa una encuesta sobre preferencias generales y personalizaremos nuestros productos según tus gustos. Siéntete libre de responder cualquier cosa.",
+            startButton: "Comenzar ahora",
+          },
+          forms: {
+            noResults:
+              "No se ha enviado ninguna encuesta. Comienza a responder las encuestas ",
+            here: "aquí",
+            title: "Encuestas",
+            buttons: {
+              restartForm: "Reiniciar encuesta",
+              prevForm: "Atrás",
+              submitForm: "Completar",
+              nextForm: "Siguiente",
+            },
+            completedScreen: {
+              title: "¡A solo un clic de terminar!",
+              subtitle:
+                "Puedes regresar y revisar si hay errores antes de enviar tus respuestas",
+            },
+            userDataForm: {
+              title: "Datos personales",
+              description:
+                "Preguntas sobre tu información personal y preferencias",
+              questions: {
+                userName: {
+                  label: "Nombre completo",
+                  placeholder: "Ejemplo: Juan Pérez",
+                },
+                userDOB: {
+                  label: "Fecha de nacimiento",
+                },
+                userEmail: {
+                  label: "Correo electrónico",
+                },
+                userGenre: {
+                  label: "Género",
+                  placeholder: "Elige una opción o escribe otra",
+                  data: ["Masculino", "Femenino", "Prefiero no decirlo"],
+                },
+                userPreferences: {
+                  label: "¿Qué haces en tu tiempo libre?",
+                  placeholder: "Elige las opciones o escribe una propia",
+                  data: [
+                    "📕 Leer libros",
+                    "⚽ Deportes",
+                    "🛫 Viajar",
+                    "🎬 Ver películas",
+                  ],
+                },
+              },
+            },
+            academicEvaluation: {
+              title: "Evaluación académica",
+              description: "Preguntas sobre este año escolar",
+              questions: {
+                yearsComment: {
+                  label: "¿Qué cosas podrían mejorar este año en general?",
+                  placeholder:
+                    "Danos sugerencias y comentarios para mejorar tu aprendizaje este año",
+                },
+                materialRating: {
+                  label: "Califica el material de este año",
+                },
+                preferredSchedules: {
+                  label: "¿Qué horarios prefieres para las clases?",
+                  placeholder: "Selecciona 1-2 horarios que mejor te funcionen",
+                },
+                assistedToAllClasses: {
+                  labelDefault: "Asistí a todas las clases",
+                  label: "Yo {{assisted}} a todas las clases",
+                  labelAlternative: "¿Asististe a todas las clases?",
+                  ego: "Yo",
+                  label_context: {
+                    true: "asistí",
+                    false: "no asistí",
+                  },
+                },
+              },
+            },
+            techPreferences: {
+              title: "Tecnología",
+              description: "Preguntas sobre tecnología",
+              questions: {
+                techComment: {
+                  label: "¿Qué tecnología te gustaría aprender en el futuro?",
+                  placeholder:
+                    "Dinos qué tecnología crees que te permitiría hacer grandes cosas",
+                },
+                favoriteOS: {
+                  label: "Selecciona tu sistema operativo favorito",
+                  labelAlternative: "Tu sistema operativo favorito",
+                  placeholder: "Selecciona un sistema operativo",
+                },
+                userDevices: {
+                  label: "¿Qué dispositivos usas normalmente?",
+                  placeholder: "Selecciona 1-2 dispositivos que utilizas",
+                },
+                learningTime: {
+                  label: "¿Cuántas horas dedicas a aprender tecnología?",
+                  placeholder: "Selecciona un tiempo estimado",
+                },
+              },
+            },
+            filmPreferences: {
+              title: "Películas",
+              description: "Preguntas sobre cine",
+              questions: {
+                filmGenres: {
+                  label: "¿Qué géneros de películas te gustan?",
+                  placeholder: "Elige las opciones o escribe una propia",
+                  data: ["Acción", "Ciencia ficción", "Comedia", "Terror"],
+                  defaultValues: ["Acción", "Terror"],
+                },
+                favoriteFilm: {
+                  label: "¿Cuál es tu película favorita?",
+                  placeholder: "Escribe la que más te haya gustado",
+                },
+                watchedFilms: {
+                  label: "Selecciona las películas que has visto",
+                  placeholder: "Abre y haz clic en las películas que has visto",
+                },
+                frequencyWatchingFilms: {
+                  label: "¿Con qué frecuencia ves películas?",
+                  labelAlternative: "Tu frecuencia viendo películas",
+                  data: ["Nunca", "Rara vez", "A veces", "A menudo", "Siempre"],
                 },
               },
             },

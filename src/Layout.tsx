@@ -4,6 +4,7 @@ import { Outlet } from "react-router-dom";
 import BrandLogo from "./components/layout/BrandLogo";
 import ThemeModeButton from "./components/layout/ThemeModeButton";
 import Links from "./components/navbar/Links";
+import { Footer } from "./components/footer/Footer";
 
 const Layout = () => {
   const [mobileOpened, { toggle: toggleMobile }] = useDisclosure();
@@ -45,9 +46,12 @@ const Layout = () => {
         </Stack>
       </AppShell.Navbar>
       <AppShell.Main>
-        <Container>
-          <Outlet />
-        </Container>
+        <Stack>
+          <Container mih="60vh">
+            <Outlet />
+          </Container>
+          <Footer />
+        </Stack>
       </AppShell.Main>
     </AppShell>
   );

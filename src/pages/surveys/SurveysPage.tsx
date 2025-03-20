@@ -221,7 +221,7 @@ const SurveysPage = () => {
                   }}
                 />
                 <Button mt="xs" onClick={handleSubmit}>
-                  Submit
+                  {t("forms.buttons.finish")}
                 </Button>
               </Group>
             </Container>

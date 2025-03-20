@@ -61,6 +61,7 @@ export default i18next
               prevForm: "Back",
               submitForm: "Complete",
               nextForm: "Next",
+              finish: "Finish",
             },
             completedScreen: {
               title: "1 click away and you're done!",
@@ -234,6 +235,7 @@ export default i18next
               prevForm: "Atrás",
               submitForm: "Completar",
               nextForm: "Siguiente",
+              finish: "Terminar",
             },
             completedScreen: {
               title: "¡A solo un clic de terminar!",

@@ -9,45 +9,60 @@ import {
 } from "@mantine/core";
 import { IconMoodSad, IconMoodSmile } from "@tabler/icons-react";
 import { useSurveeFormContext } from "../../forms/FormContext";
-
-const ratingMoviesFrequency = [
-  "Never",
-  "Barely",
-  "Sometimes",
-  "Often",
-  "Always",
-];
+import { useTranslation } from "react-i18next";
 
 const FilmPreferencesSurvey = () => {
   const form = useSurveeFormContext();
-  const frequencyWord =
-    ratingMoviesFrequency[form.getValues().frequencyWatchingFilms - 1];
+  const { t } = useTranslation();
+  const frequencyWord = (
+    t("forms.filmPreferences.questions.frequencyWatchingFilms.data", {
+      returnObjects: true,
+    }) as string[]
+  )[form.getValues().frequencyWatchingFilms - 1];
   return (
     <>
       <TagsInput
         key={form.key("filmGenres")}
         {...form.getInputProps("filmGenres")}
-        label="What film genres do you like?"
-        placeholder="Choose the options or write your own option"
-        data={["Action", "Sci-fi", "Comedy", "Horror"]}
-        defaultValue={["Action", "Horror"]}
+        label={t("forms.filmPreferences.questions.filmGenres.label")}
+        placeholder={t(
+          "forms.filmPreferences.questions.filmGenres.placeholder"
+        )}
+        data={
+          t("forms.filmPreferences.questions.filmGenres.data", {
+            returnObjects: true,
+          }) as string[]
+        }
+        defaultValue={
+          t("forms.filmPreferences.questions.filmGenres.defaultValues", {
+            returnObjects: true,
+          }) as string[]
+        }
         clearable
       />
       <Autocomplete
         key={form.key("favoriteFilm")}
         {...form.getInputProps("favoriteFilm")}
-        label={"What is your favorite movie?"}
-        placeholder="Write down the one that you liked the most"
+        label={t("forms.filmPreferences.questions.favoriteFilm.label")}
+        placeholder={t(
+          "forms.filmPreferences.questions.favoriteFilm.placeholder"
+        )}
         data={["Inception", "The Matrix", "Avengers", "Titanic"]}
       />
       <MultiSelect
         key={form.key("watchedFilms")}
         {...form.getInputProps("watchedFilms")}
-        label="Select the movies that you've watched"
-        placeholder="Open and click the movies that you've watched "
+        label={t("forms.filmPreferences.questions.watchedFilms.label")}
+        placeholder={t(
+          "forms.filmPreferences.questions.watchedFilms.placeholder"
+        )}
         data={["Inception", "The Matrix", "Avengers", "Titanic"]}
       />
-      <Input.Wrapper label="How often do you watch movies?">
+      <Input.Wrapper
+        label={t(
+          "forms.filmPreferences.questions.frequencyWatchingFilms.label"
+        )}
+      >
         <Group align="start">
           <Rating
             key={form.key("frequencyWatchingFilms")}

@@ -11,6 +11,10 @@ export default i18next
     resources: {
       en: {
         translation: {
+          time: {
+            hour: "{{hours}} hour",
+            hour_plural: "{{hours}} hours",
+          },
           weekday: {
             monday: "Monday",
             tuesday: "Tuesday",
@@ -85,7 +89,50 @@ export default i18next
                     false: "did not assist",
                   },
                 },
-                preferredSchedules: [],
+              },
+            },
+            techPreferences: {
+              questions: {
+                techComment: {
+                  label:
+                    "What technology would you like to learn in the future?",
+                  placeholder:
+                    "Tell us which technology do you think would make you able to do great things",
+                },
+                favoriteOS: {
+                  label: "Select your favorite OS",
+                  placeholder: "Select an OS",
+                },
+                userDevices: {
+                  label: "Which devices do you normally use?",
+                  placeholder: "Select 2 devices that you use",
+                },
+                learningTime: {
+                  label: "How many hours do you dedicate on learning tech?",
+                  placeholder: "Select an estimated time",
+                },
+              },
+            },
+            filmPreferences: {
+              questions: {
+                filmGenres: {
+                  label: "What film genres do you like?",
+                  placeholder: "Choose the options or write your own option",
+                  data: ["Action", "Sci-fi", "Comedy", "Horror"],
+                  defaultValues: ["Action", "Horror"],
+                },
+                favoriteFilm: {
+                  label: "What is your favorite movie?",
+                  placeholder: "Write down the one that you liked the most",
+                },
+                watchedFilms: {
+                  label: "Select the movies that you've watched",
+                  placeholder: "Open and click the movies that you've watched",
+                },
+                frequencyWatchingFilms: {
+                  label: "How often do you watch movies?",
+                  data: ["Never", "Barely", "Sometimes", "Often", "Always"],
+                },
               },
             },
           },

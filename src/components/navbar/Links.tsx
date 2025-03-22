@@ -57,7 +57,7 @@ const Links = () => {
       description={description}
       leftSection={item.icon && <item.icon size={16} stroke={1.5} />}
       color={color}
-      key={crypto.randomUUID()}
+      key={label}
     />
   ));
   return <>{links}</>;

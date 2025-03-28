@@ -1,5 +1,6 @@
 {
   "name": "survey-forms",
+  "homepage": "https://hodeonartz.github.io/survey-forms/",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -7,7 +8,9 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@mantine/core": "^7.17.2",
@@ -16,6 +19,7 @@
     "@tabler/icons-react": "^3.30.0",
     "babel-plugin-react-compiler": "^19.0.0-beta-e1e972c-20250221",
     "date-fns": "^4.1.0",
+    "gh-pages": "^6.3.0",
     "i18next": "^24.2.2",
     "i18next-browser-languagedetector": "^8.0.4",
     "react": "^19.0.0",

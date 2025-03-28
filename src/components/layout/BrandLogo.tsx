@@ -7,7 +7,7 @@ import { t } from "i18next";
 const BrandLogo = () => {
   return (
     <Link
-      to="/"
+      to="/survey-forms/"
       style={{ all: "inherit" }}
       title={t("routes.home.description")}
     >

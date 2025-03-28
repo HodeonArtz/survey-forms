@@ -54,7 +54,7 @@ const FormNotSubmittedMesage = () => {
   return (
     <Text>
       {t("forms.noResults")}
-      <Anchor component={Link} to={"/surveys"}>
+      <Anchor component={Link} to={"/survey-forms/surveys"}>
         {t("forms.here")}
       </Anchor>
       .

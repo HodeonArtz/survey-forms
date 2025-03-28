@@ -156,7 +156,7 @@ const SurveysPage = () => {
   // función para enviar el formulario y mostrar los resultados
   const handleSubmit = () => {
     storeIsFormSubmittedToLocal(true);
-    navigateTo("/results");
+    navigateTo("/survey-forms/results");
   };
 
   // función para cancelar el envío del formulario

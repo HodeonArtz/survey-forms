@@ -24,21 +24,21 @@ const Links = () => {
   const navLinks: NavLinkData[] = [
     {
       label: t("routes.home.label"),
-      href: "/",
+      href: "/survey-forms/",
       icon: IconHome,
       color: "indigo",
     },
     {
       label: t("routes.surveys.label"),
       description: t("routes.surveys.description"),
-      href: "/surveys",
+      href: "/survey-forms/surveys",
       icon: IconClipboardText,
       color: "violet",
     },
     {
       label: t("routes.results.label"),
       description: t("routes.results.description"),
-      href: "/results",
+      href: "/survey-forms/results",
       icon: IconChartHistogram,
       color: "lime",
     },
